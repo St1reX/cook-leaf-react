@@ -4,12 +4,7 @@ export default function Header() {
   return (
     <>
       <nav className="navbar rounded-box flex w-full items-center justify-between gap-2 mb-4">
-        <div className="navbar-start max-md:w-1/4">
-          <a
-            className="link text-base-content link-neutral text-xl font-bold no-underline"
-            href="#"
-          ></a>
-        </div>
+        <div className="navbar-start max-md:w-1/4"></div>
         <div className="navbar-center max-md:hidden">
           <img className="w-48" src={mainLogo} alt="Application Logo" />
         </div>

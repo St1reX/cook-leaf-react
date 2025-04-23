@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import Header from "./components/Header/Header";
 import Navbar from "./components/Navbar/Navbar";
 import SearchBar from "./components/SearchBar/SearchBar";
+import FilterBar from "./components/FilterBar/FilterBar";
 
 async function loadFlyonUI() {
   return import("flyonui/flyonui");
@@ -23,6 +24,7 @@ function App() {
         <Header></Header>
         <Navbar></Navbar>
         <SearchBar></SearchBar>
+        <FilterBar></FilterBar>
       </div>
     </>
   );
