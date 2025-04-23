@@ -20,7 +20,7 @@ function App() {
 
   return (
     <>
-      <div id="mainContainer" className="h-[3000px]">
+      <div id="mainContainer">
         <Header></Header>
         <Navbar></Navbar>
         <SearchBar></SearchBar>

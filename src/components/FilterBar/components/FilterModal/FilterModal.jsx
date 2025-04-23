@@ -44,7 +44,7 @@ export default function FilterModal() {
               <Rating></Rating>
             </div>
 
-            <div className="modal-footer">
+            <div className="modal-footer pt-2">
               <button type="button" className="btn btn-soft btn-secondary" data-overlay="#filter-modal">
                 Close
               </button>
