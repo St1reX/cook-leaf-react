@@ -1,7 +1,7 @@
 export default function Ingredient() {
   return (
     <>
-      <div className="max-w-sm">
+      <div className="w-full">
         <h3 className="text-xl mb-3">Ingredients</h3>
         <input type="text" placeholder="Search for ingredients" className="input input-xl max-w-sm" id="ingredients-input" />
 

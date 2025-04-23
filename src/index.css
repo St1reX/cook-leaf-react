@@ -4,6 +4,8 @@
   themes: mintlify --default, dark, gourmet;
 }
 @import "flyonui/variants.css";
+@import "flyonui/src/vendor/waves.css";
+
 @source "./node_modules/flyonui/dist/index.js";
 @source "./node_modules/flyonui/flyonui.js";
 

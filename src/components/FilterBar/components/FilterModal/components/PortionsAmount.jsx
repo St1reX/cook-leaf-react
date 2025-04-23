@@ -1,14 +1,17 @@
 export default function PortionsAmount() {
+  const portions = ["1", "2", "4", "6", "8+"];
+  const width = 100 / portions.length;
+
   return (
     <>
-      <div className="w-100">
+      <div className="w-full">
         <h3 className="text-xl mb-3">Portions amount</h3>
-        <div className="flex join w-100">
-          <button className="btn btn-xl btn-outline btn-default join-item">1</button>
-          <button className="btn btn-xl btn-outline btn-default join-item">2</button>
-          <button className="btn btn-xl btn-outline btn-default join-item">4</button>
-          <button className="btn btn-xl btn-outline btn-default join-item">6</button>
-          <button className="btn btn-xl btn-outline btn-default join-item">8</button>
+        <div className="flex join w-full">
+          {portions.map((amount) => (
+            <button key={amount} className={`btn btn-xl btn-outline btn-default join-item w-[${width}%]`}>
+              {amount}
+            </button>
+          ))}
         </div>
       </div>
     </>

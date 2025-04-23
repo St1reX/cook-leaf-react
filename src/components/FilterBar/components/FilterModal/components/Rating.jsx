@@ -1,7 +1,7 @@
 export default function Rating() {
   return (
     <>
-      <div className="w-100">
+      <div className="w-full">
         <h3 className="text-xl mb-3">Rating</h3>
 
         <ul className="text-base-content/80 list-inside">

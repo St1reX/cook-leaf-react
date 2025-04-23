@@ -1,7 +1,7 @@
 export default function ExcludedIngredient() {
   return (
     <>
-      <div className="max-w-sm">
+      <div className="w-full">
         <h3 className="text-xl mb-3">Excluded ingredients</h3>
         <input type="text" placeholder="Search for ingredients" className="input input-xl max-w-sm" id="ingredients-input" />
 

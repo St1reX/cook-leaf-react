@@ -30,7 +30,7 @@ export default function FilterModal() {
               </button>
             </div>
 
-            <div className="modal-body pt-1">
+            <div className="modal-body">
               <Ingredient></Ingredient>
               <div className="divider"></div>
               <ExcludedIngredient></ExcludedIngredient>
