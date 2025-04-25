@@ -1,11 +1,11 @@
-import Ingredient from "./components/Ingredients";
-import ExcludedIngredient from "./components/ExcludedIngredients";
-import DifficultyLevel from "./components/DifficultyLevel";
-import PreperationTime from "./components/PreperationTime";
-import PortionsAmount from "./components/PortionsAmount";
-import Rating from "./components/Rating";
+import Ingredient from './components/Ingredients';
+import ExcludedIngredient from './components/ExcludedIngredients';
+import DifficultyLevel from './components/DifficultyLevel';
+import PreperationTime from './components/PreperationTime';
+import PortionsAmount from './components/PortionsAmount';
+import Rating from './components/Rating';
 
-import "./FilterModal.css";
+import './FilterModal.css';
 
 export default function FilterModal() {
   return (
@@ -16,7 +16,7 @@ export default function FilterModal() {
         role="dialog"
         tabIndex={-1}
       >
-        <div className="modal-dialog overlay-open:mt-12 overlay-open:opacity-100 overlay-open:duration-300 transition-all ease-out">
+        <div className="modal-dialog  overlay-open:opacity-100 overlay-open:duration-300 transition-all ease-out">
           <div className="modal-content">
             <div className="modal-header">
               <h3 className="modal-title">Filters</h3>

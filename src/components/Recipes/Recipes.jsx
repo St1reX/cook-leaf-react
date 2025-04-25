@@ -3,7 +3,7 @@ export default function Recipes() {
     <>
       <div id="gridWrapper" className="grid gap-4 grid-cols-[repeat(auto-fit,280px)] justify-center">
         {Array.from({ length: 10 }).map((_, i) => (
-          <div className="card group shadow-none sm:max-w-sm h-[350px]">
+          <div key={i} className="card group shadow-none sm:max-w-sm h-[350px]">
             <figure className="h-[75%]">
               <img
                 src="https://cdn.flyonui.com/fy-assets/components/card/image-8.png"

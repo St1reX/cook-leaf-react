@@ -1,6 +1,24 @@
-import mainLogo from "../../assets/mainLogo.svg";
+import mainLogo from '../../assets/mainLogo.svg';
 
 export default function Header() {
+  const menuOptions = [
+    {
+      content: 'Search',
+      link: '#',
+      icon: 'icon-[mingcute--search-3-line]',
+    },
+    {
+      content: 'Login',
+      link: '#',
+      icon: 'icon-[mingcute--enter-door-line]',
+    },
+    {
+      content: 'Register',
+      link: '#',
+      icon: 'icon-[mingcute--user-1-line]',
+    },
+  ];
+
   return (
     <>
       <nav className="navbar rounded-box flex w-full items-center justify-between gap-2 mb-4">
@@ -10,34 +28,14 @@ export default function Header() {
         </div>
         <div className="navbar-end items-center gap-4">
           <ul className="menu menu-horizontal p-0 font-medium">
-            <li>
-              <a href="#">
-                Search
-                <span
-                  className="icon-[mingcute--search-3-line]"
-                  style={{ width: 24, height: 24, color: "#000" }}
-                />
-              </a>
-            </li>
-            <li>
-              <a href="#">
-                Login
-                <br></br>
-                <span
-                  className="icon-[mingcute--enter-door-line]"
-                  style={{ width: 24, height: 24, color: "#000" }}
-                />
-              </a>
-            </li>
-            <li>
-              <a href="#">
-                Register
-                <span
-                  className="icon-[mingcute--user-1-line]"
-                  style={{ width: 24, height: 24, color: "#000" }}
-                />
-              </a>
-            </li>
+            {menuOptions.map((element, index) => (
+              <li key={index}>
+                <a href={element.link}>
+                  {element.content}
+                  <span className={element.icon} style={{ width: 24, height: 24 }} />
+                </a>
+              </li>
+            ))}
           </ul>
         </div>
       </nav>

@@ -5,7 +5,7 @@ export default function Rating() {
         <h3 className="text-xl mb-3">Rating</h3>
 
         <ul className="text-base-content/80 list-inside">
-          {[1, 2, 3, 4, 5].map((star) => (
+          {[1, 2, 3, 4, 5].map(star => (
             <li key={star} className="flex justify-between items-center gap-1 mb-3">
               <div className="flex items-center">
                 <input type="checkbox" className="checkbox checkbox-primary mr-1" id={`rating-${star}`} />
@@ -17,7 +17,7 @@ export default function Rating() {
                       style={{
                         width: 24,
                         height: 24,
-                        color: i < star ? "#000" : "#ccc",
+                        color: i < star ? '#000' : '#ccc',
                       }}
                     />
                   ))}

@@ -1,16 +1,17 @@
 export default function PortionsAmount() {
   const portions = ['1', '2', '4', '6', '8+'];
-  const width = 100 / portions.length;
+  const elementWidth = Math.floor(100 / portions.length);
 
   return (
     <>
       <div className="w-full">
         <h3 className="text-xl mb-3">Portions amount</h3>
-        <div className="flex join w-full">
+        <div className="flex gap-1 w-full">
           {portions.map(amount => (
-            <button key={amount} className={`btn btn-xl btn-outline btn-default join-item w-[${width}%]`}>
-              {amount}
-            </button>
+            <label key={amount} className="custom-soft-option flex flex-row items-start">
+              <input type="checkbox" className="checkbox hidden" />
+              <span className="flex justify-center items-center label-text w-full text-lg font-medium text-start">{amount}</span>
+            </label>
           ))}
         </div>
       </div>

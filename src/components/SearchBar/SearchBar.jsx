@@ -26,7 +26,7 @@ export default function SearchBar() {
             </div>
             <div
               className="absolute left-0 w-full z-50 bg-base-100 rounded-box p-2 shadow-base-300/20 shadow-lg "
-              style={{ display: "none" }}
+              style={{ display: 'none' }}
               data-combo-box-output=""
             >
               <div data-combo-box-output-items-wrapper="" className="space-y-0.5">

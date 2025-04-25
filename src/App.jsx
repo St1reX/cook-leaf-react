@@ -5,6 +5,7 @@ import Navbar from './components/Navbar/Navbar';
 import SearchBar from './components/SearchBar/SearchBar';
 import FilterBar from './components/FilterBar/FilterBar';
 import Recipes from './components/Recipes/Recipes';
+import Footer from './components/Footer/Footer';
 
 async function loadFlyonUI() {
   return import('flyonui/flyonui');
@@ -30,6 +31,7 @@ function App() {
           <Recipes></Recipes>
         </div>
       </div>
+      <Footer></Footer>
     </>
   );
 }
