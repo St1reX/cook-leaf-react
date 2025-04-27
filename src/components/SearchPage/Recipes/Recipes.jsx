@@ -1,14 +1,19 @@
+import ShowMore from "./components/ShowMore";
+
 export default function Recipes() {
   return (
     <>
-      <div id="gridWrapper" className="grid gap-4 grid-cols-[repeat(auto-fit,280px)] justify-center">
-        {Array.from({ length: 10 }).map((_, i) => (
+      <div
+        id="gridWrapper"
+        className="grid gap-6 grid-cols-[repeat(auto-fit,240px)] justify-center mb-4"
+      >
+        {Array.from({ length: 20 }).map((_, i) => (
           <div key={i} className="card group shadow-none sm:max-w-sm h-[350px]">
             <figure className="h-[75%]">
               <img
                 src="https://cdn.flyonui.com/fy-assets/components/card/image-8.png"
                 alt="Shoes"
-                className="transition-transform rounded-lg duration-500 group-hover:scale-110 h-full"
+                className="transition-transform rounded-lg object-cover duration-500 group-hover:scale-110 h-full"
               />
             </figure>
             <div className="card-body p-1">
@@ -17,7 +22,7 @@ export default function Recipes() {
                 <div className="flex items-center">
                   <span>5</span>
                   <span className="icon-[mingcute--star-fill]" style={{ width: 16, height: 16 }} />
-                  <span className="text-accent/60">{'(54)'}</span>
+                  <span className="text-accent/60">{"(54)"}</span>
                 </div>
                 <div>
                   <span>2 godz. 35 min</span>
@@ -27,6 +32,8 @@ export default function Recipes() {
           </div>
         ))}
       </div>
+
+      <ShowMore></ShowMore>
     </>
   );
 }

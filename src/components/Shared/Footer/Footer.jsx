@@ -1,4 +1,4 @@
-import mainLogo from '../../assets/mainLogo.svg';
+import mainLogo from "../../../assets/mainLogo.svg";
 
 export default function Footer() {
   return (
@@ -10,11 +10,11 @@ export default function Footer() {
         </div>
         <aside className="grid-flow-col items-center">
           <p>
-            {' '}
-            ©2024{' '}
+            {" "}
+            ©2024{" "}
             <a className="link link-hover font-medium" href="#">
               CookLeaf
-            </a>{' '}
+            </a>{" "}
           </p>
         </aside>
         <div className="flex h-5 gap-4">

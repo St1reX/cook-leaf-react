@@ -1,14 +1,15 @@
-import './App.css';
-import { useEffect } from 'react';
-import Header from './components/Header/Header';
-import Navbar from './components/Navbar/Navbar';
-import SearchBar from './components/SearchBar/SearchBar';
-import FilterBar from './components/FilterBar/FilterBar';
-import Recipes from './components/Recipes/Recipes';
-import Footer from './components/Footer/Footer';
+import "./App.css";
+import { useEffect } from "react";
+import { Route, Routes } from "react-router-dom";
+
+import Layout from "./components/Layout";
+
+import Search from "./pages/Search";
+import About from "./pages/About";
+import NotFound from "./pages/NotFound";
 
 async function loadFlyonUI() {
-  return import('flyonui/flyonui');
+  return import("flyonui/flyonui");
 }
 
 function App() {
@@ -20,18 +21,19 @@ function App() {
     initFlyonUI();
   }, []);
 
+  const siteContent = (
+    <>
+      <Routes>
+        <Route path="*" element={<NotFound />}></Route>
+        <Route path="/" element={<Search />}></Route>
+        <Route path="/about" element={<About />}></Route>
+      </Routes>
+    </>
+  );
+
   return (
     <>
-      <div id="mainContainer" className="2xl:px-[18%] flex justify-center px-8">
-        <div id="contentWrapper" className="max-w-7xl w-full">
-          <Header></Header>
-          <Navbar></Navbar>
-          <SearchBar></SearchBar>
-          <FilterBar></FilterBar>
-          <Recipes></Recipes>
-        </div>
-      </div>
-      <Footer></Footer>
+      <Layout Content={siteContent}></Layout>
     </>
   );
 }
