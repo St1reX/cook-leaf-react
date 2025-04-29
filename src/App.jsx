@@ -1,31 +1,25 @@
-import "./App.css";
-import { useEffect } from "react";
-import { Route, Routes } from "react-router-dom";
+import './App.css';
+import { Route, Routes } from 'react-router-dom';
 
-import Layout from "./components/Layout";
+import Layout from './components/Layout';
 
-import Search from "./pages/Search";
-import About from "./pages/About";
-import NotFound from "./pages/NotFound";
-
-async function loadFlyonUI() {
-  return import("flyonui/flyonui");
-}
+import Search from './pages/Search';
+import About from './pages/About';
+import NotFound from './pages/NotFound';
+import useFlyonUIInit from './hooks/useFlyonUIInit';
+import Register from './pages/Register';
+import Login from './pages/Login';
 
 function App() {
-  useEffect(() => {
-    const initFlyonUI = async () => {
-      await loadFlyonUI();
-    };
-
-    initFlyonUI();
-  }, []);
+  useFlyonUIInit();
 
   const siteContent = (
     <>
       <Routes>
         <Route path="*" element={<NotFound />}></Route>
         <Route path="/" element={<Search />}></Route>
+        <Route path="/register" element={<Register />}></Route>
+        <Route path="/login" element={<Login />}></Route>
         <Route path="/about" element={<About />}></Route>
       </Routes>
     </>
