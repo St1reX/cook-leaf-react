@@ -11,7 +11,7 @@ export default function LoginForm() {
         <form method="post" className="flex flex-col gap-4 justify-center mb-8">
           <MailInput></MailInput>
           <PasswordInput></PasswordInput>
-          <button className="w-full btn btn-primary">Register!</button>
+          <button className="w-full btn btn-primary">Login!</button>
         </form>
         <div className="w-full flex justify-center">
           <Link to={"/register"} className="link link-primary link-animated">
