@@ -2,7 +2,7 @@ import mainLogo from "../../../assets/mainLogo.svg";
 
 export default function Footer() {
   return (
-    <footer className="footer bg-base-200/60 px-6 py-4">
+    <footer className="footer bg-base-200/60 px-6 py-4 mt-auto">
       <div className="flex w-full flex-wrap items-center justify-between">
         <div className="flex items-center text-xl font-bold text-base-content">
           <img className="w-16" src={mainLogo} alt="Application Logo" />

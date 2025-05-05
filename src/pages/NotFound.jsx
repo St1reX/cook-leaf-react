@@ -1,4 +1,5 @@
 import notFoundImage from "../assets/not_found_undraw.svg";
+import { Link } from "react-router-dom";
 
 export default function NotFound() {
   return (
@@ -11,7 +12,9 @@ export default function NotFound() {
           Unfortunately, the page was not found. Go to the home page or use the search engine.
         </p>
 
-        <button className="btn btn-outline btn-xl btn-primary">Explore</button>
+        <Link to={"/"} className="btn btn-outline btn-xl btn-primary">
+          Explore
+        </Link>
       </div>
     </>
   );

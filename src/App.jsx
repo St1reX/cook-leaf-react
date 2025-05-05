@@ -1,14 +1,15 @@
-import './App.css';
-import { Route, Routes } from 'react-router-dom';
+import "./App.css";
+import { Route, Routes } from "react-router-dom";
 
-import Layout from './components/Layout';
+import useFlyonUIInit from "./hooks/useFlyonUIInit";
 
-import Search from './pages/Search';
-import About from './pages/About';
-import NotFound from './pages/NotFound';
-import useFlyonUIInit from './hooks/useFlyonUIInit';
-import Register from './pages/Register';
-import Login from './pages/Login';
+import Layout from "./components/Layout";
+
+import Search from "./pages/Search";
+import About from "./pages/About";
+import NotFound from "./pages/NotFound";
+import Register from "./pages/Register";
+import Login from "./pages/Login";
 
 function App() {
   useFlyonUIInit();
