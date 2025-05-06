@@ -1,5 +1,5 @@
-import MailInput from "./components/MailInput/MailInput";
-import PasswordInput from "./components/PasswordInput/PasswordInput";
+import MailInput from "./RegisterFormFields/MailInput/MailInput";
+import PasswordInput from "./RegisterFormFields/PasswordInput/PasswordInput";
 import { Link } from "react-router-dom";
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
@@ -8,7 +8,7 @@ import { Notyf } from "notyf";
 export default function RegisterForm() {
   const notyf = new Notyf({
     position: {
-      x: "right",
+      x: "center",
       y: "top",
     },
   });
@@ -24,12 +24,16 @@ export default function RegisterForm() {
           validationSchema={Yup.object({
             mail: Yup.string().email("Provided email address is invalid").required("Mail is required"),
             password: Yup.string()
-              .required()
-              .min(6)
-              .matches(/[a-z]/)
-              .matches(/[A-Z]/)
-              .matches(/[0-9]/)
-              .matches(/[^a-zA-Z0-9]/),
+              .required("Password is required")
+              .test(
+                "is-strong-password",
+                "Password must contain at least 6 characters, one uppercase letter, one number, and one special character.",
+                (value = "") =>
+                  value.length >= 6 &&
+                  /[A-Z]/.test(value) &&
+                  /[0-9]/.test(value) &&
+                  /[^a-zA-Z0-9]/.test(value)
+              ),
           })}
           onSubmit={async (values, { validateForm, setSubmitting }) => {
             console.log("Wysyłanie formsa");

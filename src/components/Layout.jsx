@@ -2,7 +2,7 @@ import Header from "./Shared/Header/Header";
 import Footer from "./Shared/Footer/Footer";
 import Navbar from "./Shared/Navbar/Navbar";
 
-export default function Layout(props) {
+export default function Layout({ Content }) {
   return (
     <>
       <div className="flex flex-col min-h-screen">
@@ -10,7 +10,7 @@ export default function Layout(props) {
           <div id="contentWrapper" className="max-w-7xl w-full">
             <Header></Header>
             <Navbar></Navbar>
-            {props.Content}
+            {Content}
           </div>
         </div>
         <Footer></Footer>

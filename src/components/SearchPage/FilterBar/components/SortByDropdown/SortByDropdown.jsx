@@ -1,4 +1,15 @@
+import { useState } from "react";
+
 export default function SortByDropdown() {
+  const [sort, setSort] = useState("Newest");
+
+  const sortingOptions = [
+    { label: "Newest", value: "createdAt" },
+    { label: "Name", value: "name" },
+    { label: "Preparation time shortest", value: "preparationTime" },
+    { label: "Highest rated", value: "rating" },
+  ];
+
   return (
     <>
       <div className="dropdown relative inline-flex [--auto-close:inside]">
@@ -10,8 +21,12 @@ export default function SortByDropdown() {
           aria-expanded="false"
           aria-label="Dropdown"
         >
-          Sort By
-          <span className="icon-[tabler--chevron-down] dropdown-open:rotate-180 size-4" />
+          <span className="text-accent/60 mr-2">Sort By</span>
+
+          <div className="font-semibold flex items-center">
+            <span className="mr-0.5">{sortingOptions.find((element) => element.value === sort)?.label}</span>
+            <span className="icon-[tabler--chevron-down] dropdown-open:rotate-180 size-4" />
+          </div>
         </button>
         <div
           className="dropdown-menu dropdown-open:opacity-100 hidden"
@@ -19,25 +34,25 @@ export default function SortByDropdown() {
           aria-orientation="vertical"
           aria-labelledby="dropdown-transportation"
         >
-          <div className="dropdown-item gap-4">
-            <input
-              id="dropdown-radio-car-2"
-              name="dropdown-item-radio"
-              type="radio"
-              className="radio radio-primary"
-              defaultChecked=""
-            />
-            <label htmlFor="dropdown-radio-car-2" className="label-text text-base-content block text-sm font-semibold">
-              Car{" "}
-            </label>
-          </div>
-          <div className="dropdown-item gap-4">
-            <input id="dropdown-radio-bicycle-2" name="dropdown-item-radio" type="radio" className="radio radio-primary" />
-            <label htmlFor="dropdown-radio-bicycle-2" className="label-text text-base-content text-sm font-semibold">
-              {" "}
-              Bicycle{" "}
-            </label>
-          </div>
+          {sortingOptions.map(({ value, label }, index) => (
+            <div className="dropdown-item gap-4" key={index}>
+              <input
+                id={`search-dropdown-option-${index}`}
+                name="search-dropdown"
+                type="radio"
+                className="radio radio-primary"
+                value={value}
+                checked={sort === value}
+                onChange={() => setSort(value)}
+              />
+              <label
+                htmlFor={`search-dropdown-option-${index}`}
+                className="label-text text-base-content block text-sm font-semibold"
+              >
+                {label}
+              </label>
+            </div>
+          ))}
         </div>
       </div>
     </>

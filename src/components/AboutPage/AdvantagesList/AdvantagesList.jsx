@@ -6,10 +6,10 @@ export default function AdvantagesList() {
     "Sort and organize your favorite recipes and collections.",
     "Become the best host in any situation – whether you're a beginner cook or a kitchen master.",
     "Easily share recipes and shopping lists with friends and family members.",
-    "Perfect results every time thanks to the Thermomix® cooking settings.",
+    "Perfect results every time thanks to the CookLeaf® cooking settings.",
     "An endless source of inspiration – articles, videos, and thematic pages that make meal preparation even easier.",
-    "Access recipes anytime and anywhere on your phone, tablet, Thermomix® TM6 device, or computer.",
-    "Sync recipes directly with your Thermomix® TM6 or Thermomix® TM5 with Cook-Key®.",
+    "Access recipes anytime and anywhere on your phone, tablet, CookLeaf® device, or computer.",
+    "Sync recipes directly with your CookLeaf® device.",
   ];
 
   return (

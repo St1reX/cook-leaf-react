@@ -26,80 +26,51 @@ export default function SearchBar() {
             </div>
             <div
               className="absolute left-0 w-full z-50 bg-base-100 rounded-box p-2 shadow-base-300/20 shadow-lg "
-              style={{ display: 'none' }}
+              style={{ display: "none" }}
               data-combo-box-output=""
             >
               <div data-combo-box-output-items-wrapper="" className="space-y-0.5">
-                {/* Group: Recent Actions */}
-                <div data-combo-box-output-item='{"group": {"name": "recent", "title": "Recent Actions"}}' tabIndex={0}>
-                  <a className="dropdown-item combo-box-selected:dropdown-active" href="#">
-                    <span className="icon-[tabler--writing] text-base-content/80 size-5 shrink-0" />
-                    <span className="text-base-content" data-combo-box-search-text="Write a document" data-combo-box-value="">
-                      Write a document
-                    </span>
-                    <span
-                      className="text-base-content/50 ms-auto hidden text-xs sm:inline"
-                      data-combo-box-search-text="Google Docs"
-                      data-combo-box-value=""
-                    >
-                      Google Docs
-                    </span>
-                  </a>
-                </div>
-                <div data-combo-box-output-item='{"group": {"name": "recent", "title": "Recent Actions"}}' tabIndex={1}>
-                  <a className="dropdown-item combo-box-selected:dropdown-active" href="#">
-                    <span className="icon-[tabler--calendar] text-base-content/80 size-5 shrink-0" />
-                    <span className="text-base-content" data-combo-box-search-text="Schedule a meeting" data-combo-box-value="">
-                      Schedule a meeting
-                    </span>
-                    <span
-                      className="text-base-content/50 ms-auto hidden text-xs sm:inline"
-                      data-combo-box-search-text="Google Calendar"
-                      data-combo-box-value=""
-                    >
-                      Google Calendar
-                    </span>
-                  </a>
-                </div>
-                <div data-combo-box-output-item='{"group": {"name": "recent", "title": "Recent Actions"}}' tabIndex={2}>
-                  <a className="dropdown-item combo-box-selected:dropdown-active" href="#">
-                    <span className="icon-[tabler--presentation] text-base-content/80 size-5 shrink-0" />
-                    <span className="text-base-content" data-combo-box-search-text="Create a presentation" data-combo-box-value="">
-                      Create a presentation
-                    </span>
-                    <span
-                      className="text-base-content/50 ms-auto hidden text-xs sm:inline"
-                      data-combo-box-search-text="Microsoft PowerPoint"
-                      data-combo-box-value=""
-                    >
-                      PowerPoint
-                    </span>
-                  </a>
-                </div>
-                {/* Group: People */}
-                <div data-combo-box-output-item='{"group": {"name": "people", "title": "People"}}' tabIndex={4}>
+                <div
+                  data-combo-box-output-item='{"group": {"name": "people", "title": "People"}}'
+                  tabIndex={4}
+                >
                   <a className="dropdown-item combo-box-selected:dropdown-active" href="#">
                     <img
                       className="size-6 shrink-0 rounded-full"
                       src="https://cdn.flyonui.com/fy-assets/avatar/avatar-2.png"
                       alt="Image Description"
                     />
-                    <span className="text-base-content" data-combo-box-search-text="Alice Johnson" data-combo-box-value="">
+                    <span
+                      className="text-base-content"
+                      data-combo-box-search-text="Alice Johnson"
+                      data-combo-box-value=""
+                    >
                       Alice Johnson
                     </span>
-                    <span className="ms-auto text-xs text-teal-600" data-combo-box-search-text="Online" data-combo-box-value="">
+                    <span
+                      className="ms-auto text-xs text-teal-600"
+                      data-combo-box-search-text="Online"
+                      data-combo-box-value=""
+                    >
                       Online
                     </span>
                   </a>
                 </div>
-                <div data-combo-box-output-item='{"group": {"name": "people", "title": "People"}}' tabIndex={5}>
+                <div
+                  data-combo-box-output-item='{"group": {"name": "people", "title": "People"}}'
+                  tabIndex={5}
+                >
                   <a className="dropdown-item combo-box-selected:dropdown-active" href="#">
                     <img
                       className="size-6 shrink-0 rounded-full"
                       src="https://cdn.flyonui.com/fy-assets/avatar/avatar-11.png"
                       alt="Image Description"
                     />
-                    <span className="text-base-content" data-combo-box-search-text="David Kim" data-combo-box-value="">
+                    <span
+                      className="text-base-content"
+                      data-combo-box-search-text="David Kim"
+                      data-combo-box-value=""
+                    >
                       David Kim
                     </span>
                     <span
@@ -111,14 +82,21 @@ export default function SearchBar() {
                     </span>
                   </a>
                 </div>
-                <div data-combo-box-output-item='{"group": {"name": "people", "title": "People"}}' tabIndex={6}>
+                <div
+                  data-combo-box-output-item='{"group": {"name": "people", "title": "People"}}'
+                  tabIndex={6}
+                >
                   <a className="dropdown-item combo-box-selected:dropdown-active" href="#">
                     <img
                       className="size-6 shrink-0 rounded-full"
                       src="https://cdn.flyonui.com/fy-assets/avatar/avatar-12.png"
                       alt="Image Description"
                     />
-                    <span className="text-base-content" data-combo-box-search-text="Rosa Martinez" data-combo-box-value="">
+                    <span
+                      className="text-base-content"
+                      data-combo-box-search-text="Rosa Martinez"
+                      data-combo-box-value=""
+                    >
                       Rosa Martinez
                     </span>
                     <span

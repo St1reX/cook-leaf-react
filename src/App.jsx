@@ -10,6 +10,7 @@ import About from "./pages/About";
 import NotFound from "./pages/NotFound";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
+import Recipe from "./pages/Recipe";
 
 function App() {
   useFlyonUIInit();
@@ -19,6 +20,7 @@ function App() {
       <Routes>
         <Route path="*" element={<NotFound />}></Route>
         <Route path="/" element={<Search />}></Route>
+        <Route path="/recipe/:id" element={<Recipe />}></Route>
         <Route path="/register" element={<Register />}></Route>
         <Route path="/login" element={<Login />}></Route>
         <Route path="/about" element={<About />}></Route>

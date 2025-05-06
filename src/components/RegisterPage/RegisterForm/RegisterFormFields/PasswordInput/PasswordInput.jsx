@@ -12,7 +12,7 @@ export default function PasswordInput() {
               <label className="label-text font-medium" htmlFor="userPassword">
                 Password
               </label>
-              <div className="input max-w-sm">
+              <div className={`input max-w-sm ${meta.touched && meta.error ? "is-invalid" : ""}`}>
                 <span className="icon-[mingcute--key-2-line] text-base-content/80 my-auto me-3 size-5 shrink-0" />
                 <input
                   type="password"
@@ -23,6 +23,7 @@ export default function PasswordInput() {
                   {...field}
                 />
               </div>
+              {meta.touched && meta.error ? <span className="helper-text">{meta.error}</span> : null}
             </div>
             <div
               data-strong-password='{
@@ -51,14 +52,6 @@ export default function PasswordInput() {
               <span className="icon-[tabler--circle-check] hidden size-5 shrink-0" data-check></span>
               <span className="icon-[tabler--circle-x] hidden size-5 shrink-0" data-uncheck></span>
               Minimum number of characters is 6.
-            </li>
-            <li
-              data-pw-strength-rule="lowercase"
-              className="strong-password-active:text-success flex items-center gap-x-2"
-            >
-              <span className="icon-[tabler--circle-check] hidden size-5 shrink-0" data-check></span>
-              <span className="icon-[tabler--circle-x] hidden size-5 shrink-0" data-uncheck></span>
-              Should contain lowercase.
             </li>
             <li
               data-pw-strength-rule="uppercase"

@@ -1,14 +1,12 @@
 import ShowMore from "./components/ShowMore";
+import { Link } from "react-router-dom";
 
 export default function Recipes() {
   return (
     <>
-      <div
-        id="gridWrapper"
-        className="grid gap-6 grid-cols-[repeat(auto-fit,240px)] justify-center mb-4"
-      >
+      <div id="gridWrapper" className="grid gap-6 grid-cols-[repeat(auto-fit,240px)] justify-center mb-4">
         {Array.from({ length: 20 }).map((_, i) => (
-          <div key={i} className="card group shadow-none sm:max-w-sm h-[350px]">
+          <Link to={`/recipe/${i}`} key={i} className="card group shadow-none sm:max-w-sm h-[350px]">
             <figure className="h-[75%]">
               <img
                 src="https://cdn.flyonui.com/fy-assets/components/card/image-8.png"
@@ -29,7 +27,7 @@ export default function Recipes() {
                 </div>
               </div>
             </div>
-          </div>
+          </Link>
         ))}
       </div>
 

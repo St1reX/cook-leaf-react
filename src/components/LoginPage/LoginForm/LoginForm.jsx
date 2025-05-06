@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
-import MailInput from "./components/MailInput/MailInput";
-import PasswordInput from "./components/PasswordInput/PasswordInput";
+import MailInput from "./LoginFormFields/MailInput/MailInput";
+import PasswordInput from "./LoginFormFields/PasswordInput/PasswordInput";
 
 export default function LoginForm() {
   return (
