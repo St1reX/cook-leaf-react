@@ -1,13 +1,34 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Waves from "node-waves";
 import FilterModal from "./components/FilterModal/FilterModal";
 import SortByDropdown from "./components/SortByDropdown/SortByDropdown";
+import DifficultyLevel from "./components/FilterModal/FilteringOptions/DifficultyLevel";
 
 export default function FilterBar() {
   useEffect(() => {
     Waves.init();
     Waves.attach("#filter-button");
   }, []);
+
+  const [filters, setFilters] = useState({
+    ingredients: [],
+    excludedIngredients: [],
+    difficultyLevel: "",
+    preperationTime: "",
+    portionsAmount: "",
+    rating: [],
+    sortyBy: "",
+  });
+
+  const handleSortChange = (newSort) => {
+    setFilters((prevFilters) => ({
+      ...prevFilters,
+      sortBy: newSort,
+    }));
+    console.log(newSort);
+
+    console.log(filters.sortyBy);
+  };
 
   return (
     <>
@@ -29,7 +50,7 @@ export default function FilterBar() {
         </div>
         <div className="navbar-center max-md:hidden"></div>
         <div className="navbar-end items-center gap-4">
-          <SortByDropdown></SortByDropdown>
+          <SortByDropdown handleSortChange={handleSortChange}></SortByDropdown>
         </div>
       </nav>
     </>

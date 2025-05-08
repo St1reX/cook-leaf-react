@@ -1,7 +1,7 @@
 import { useState } from "react";
 
-export default function SortByDropdown() {
-  const [sort, setSort] = useState("Newest");
+export default function SortByDropdown({ handleSortChange }) {
+  const [sort, setSort] = useState("null");
 
   const sortingOptions = [
     { label: "Newest", value: "createdAt" },
@@ -43,7 +43,10 @@ export default function SortByDropdown() {
                 className="radio radio-primary"
                 value={value}
                 checked={sort === value}
-                onChange={() => setSort(value)}
+                onChange={() => {
+                  setSort(value);
+                  handleSortChange(value);
+                }}
               />
               <label
                 htmlFor={`sort-by-dropdown-option-${index}`}
