@@ -37,8 +37,8 @@ export default function SortByDropdown() {
           {sortingOptions.map(({ value, label }, index) => (
             <div className="dropdown-item gap-4" key={index}>
               <input
-                id={`search-dropdown-option-${index}`}
-                name="search-dropdown"
+                id={`sort-by-dropdown-option-${index}`}
+                name="sort-by-dropdown"
                 type="radio"
                 className="radio radio-primary"
                 value={value}
@@ -46,7 +46,7 @@ export default function SortByDropdown() {
                 onChange={() => setSort(value)}
               />
               <label
-                htmlFor={`search-dropdown-option-${index}`}
+                htmlFor={`sort-by-dropdown-option-${index}`}
                 className="label-text text-base-content block text-sm font-semibold"
               >
                 {label}

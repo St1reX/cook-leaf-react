@@ -1,11 +1,11 @@
-import Ingredient from './components/Ingredients';
-import ExcludedIngredient from './components/ExcludedIngredients';
-import DifficultyLevel from './components/DifficultyLevel';
-import PreperationTime from './components/PreperationTime';
-import PortionsAmount from './components/PortionsAmount';
-import Rating from './components/Rating';
+import Ingredient from "./FilteringOptions/Ingredients";
+import ExcludedIngredient from "./FilteringOptions/ExcludedIngredients";
+import DifficultyLevel from "./FilteringOptions/DifficultyLevel";
+import PreperationTime from "./FilteringOptions/PreperationTime";
+import PortionsAmount from "./FilteringOptions/PortionsAmount";
+import Rating from "./FilteringOptions/Rating";
 
-import './FilterModal.css';
+import "./FilterModal.css";
 
 export default function FilterModal() {
   return (
