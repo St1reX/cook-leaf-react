@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Sansation:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap");
 @import "tailwindcss";
 
 @plugin "flyonui" {
@@ -11,3 +12,7 @@
 @source "../node_modules/flyonui/flyonui.js";
 
 @plugin "@iconify/tailwind4";
+
+@theme {
+  --font-main: "Sansation", "sans-serif";
+}
