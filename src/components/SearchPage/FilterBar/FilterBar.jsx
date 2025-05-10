@@ -2,7 +2,8 @@ import { useEffect, useState } from "react";
 import Waves from "node-waves";
 import FilterModal from "./components/FilterModal/FilterModal";
 import SortByDropdown from "./components/SortByDropdown/SortByDropdown";
-import DifficultyLevel from "./components/FilterModal/FilteringOptions/DifficultyLevel";
+import ActiveFilters from "./components/ActiveFilters/ActiveFilters";
+import { handleSortChange } from "./components/FilterHandlers/FilterHandlers";
 
 export default function FilterBar() {
   useEffect(() => {
@@ -11,31 +12,42 @@ export default function FilterBar() {
   }, []);
 
   const [filters, setFilters] = useState({
-    ingredients: [],
-    excludedIngredients: [],
-    difficultyLevel: "",
-    preperationTime: "",
-    portionsAmount: "",
-    rating: [],
-    sortyBy: "",
+    ingredients: {
+      displayLocation: "modal",
+      value: null,
+    },
+    excludedIngredients: {
+      displayLocation: "modal",
+      value: null,
+    },
+    difficultyLevel: {
+      displayLocation: "filtersList",
+      value: null,
+    },
+    preperationTime: {
+      displayLocation: "filtersList",
+      value: null,
+    },
+    portionsAmount: {
+      displayLocation: "filtersList",
+      value: null,
+    },
+    rating: {
+      displayLocation: "filtersList",
+      value: null,
+    },
+    sortBy: {
+      displayLocation: "dropdown",
+      value: null,
+    },
   });
-
-  const handleSortChange = (newSort) => {
-    setFilters((prevFilters) => ({
-      ...prevFilters,
-      sortBy: newSort,
-    }));
-    console.log(newSort);
-
-    console.log(filters.sortyBy);
-  };
 
   return (
     <>
-      <nav className="navbar rounded-box flex w-full items-center justify-between gap-2 mb-4">
-        <div className="navbar-start max-md:w-1/4">
+      <nav className="navbar rounded-box flex w-full items-center justify-start gap-6 mb-4">
+        <div className="navbar-start w-fit flex justify-start items-start">
           <button
-            className="btn btn-outline btn-primary waves"
+            className="btn btn-outline btn-primary rounded-lg waves"
             aria-haspopup="dialog"
             aria-expanded="false"
             aria-controls="filter-modal"
@@ -46,11 +58,15 @@ export default function FilterBar() {
             Filters
           </button>
 
-          <FilterModal></FilterModal>
+          <FilterModal onFiltersChange={setFilters}></FilterModal>
         </div>
-        <div className="navbar-center max-md:hidden"></div>
-        <div className="navbar-end items-center gap-4">
-          <SortByDropdown handleSortChange={handleSortChange}></SortByDropdown>
+
+        <div className="navbar-center grow-1 max-md:hidden">
+          <ActiveFilters filters={filters}></ActiveFilters>
+        </div>
+
+        <div className="navbar-end w-auto items-center gap-4 ml-auto">
+          <SortByDropdown onChange={(newSort) => handleSortChange(newSort, setFilters)}></SortByDropdown>
         </div>
       </nav>
     </>

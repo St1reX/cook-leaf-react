@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export default function SortByDropdown({ handleSortChange }) {
+export default function SortByDropdown({ onChange }) {
   const [sort, setSort] = useState("null");
 
   const sortingOptions = [
@@ -45,7 +45,7 @@ export default function SortByDropdown({ handleSortChange }) {
                 checked={sort === value}
                 onChange={() => {
                   setSort(value);
-                  handleSortChange(value);
+                  onChange(value);
                 }}
               />
               <label

@@ -1,24 +1,29 @@
 import { useState } from "react";
 
-export default function PreperationTime() {
-  const [preparationTime, setTime] = useState(null);
-  const handleTimeChange = (e) => setTime(e.target.value === preparationTime ? null : e.target.value);
+export default function PreperationTime({ onChange }) {
+  const [selectedTime, setSelectedTime] = useState(null);
 
-  const preparationTimes = ["≤15", "≤30", "≤45"];
+  const handleLocalChange = (e) => {
+    const newTime = e.target.value === selectedTime ? null : e.target.value;
+    setSelectedTime(newTime);
+    onChange(newTime);
+  };
+
+  const time = ["≤15", "≤30", "≤45"];
 
   return (
     <>
       <div className="w-full">
         <h3 className="text-xl mb-3">Preperation time</h3>
         <div className="w-full flex gap-1">
-          {preparationTimes.map((value) => (
+          {time.map((value) => (
             <label key={value} className="custom-soft-option flex flex-row items-start">
               <input
                 type="checkbox"
                 className="checkbox hidden"
                 value={value}
-                checked={value === preparationTime}
-                onChange={handleTimeChange}
+                checked={value === selectedTime}
+                onChange={handleLocalChange}
               />
               <span className="flex justify-center items-center label-text w-full text-lg font-medium text-start">
                 {value}
