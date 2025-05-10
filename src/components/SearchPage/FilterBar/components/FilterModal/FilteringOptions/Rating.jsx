@@ -1,6 +1,6 @@
 import RatingStars from "../../../../../Shared/RatingStars/RatingStars";
 
-export default function Rating() {
+export default function Rating({ onRatingChange }) {
   return (
     <>
       <div className="w-full">

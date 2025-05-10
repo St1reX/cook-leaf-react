@@ -39,7 +39,7 @@ export default function FilterModal({ onFiltersChange }) {
               <div className="divider"></div>
               <PortionsAmount onPortionsAmountChange={onFiltersChange}></PortionsAmount>
               <div className="divider"></div>
-              <Rating></Rating>
+              <Rating onRatingChange={onFiltersChange}></Rating>
             </div>
 
             <div className="modal-footer pt-2">

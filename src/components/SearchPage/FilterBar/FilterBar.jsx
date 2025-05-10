@@ -39,7 +39,7 @@ export default function FilterBar() {
     rating: {
       displayLocation: "filtersList",
       prefix: "Rating: ",
-      value: null,
+      value: [1, 2, 3, 5],
     },
     sortBy: {
       displayLocation: "dropdown",
