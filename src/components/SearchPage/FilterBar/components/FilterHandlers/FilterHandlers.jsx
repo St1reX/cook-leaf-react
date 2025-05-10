@@ -27,3 +27,13 @@ export const handlePreparationTimeChange = (newTime, setFilters) => {
     },
   }));
 };
+
+export const handlePortionsAmountChange = (newAmount, setFilters) => {
+  setFilters((prevFilters) => ({
+    ...prevFilters,
+    portionsAmount: {
+      ...prevFilters.portionsAmount,
+      value: newAmount,
+    },
+  }));
+};

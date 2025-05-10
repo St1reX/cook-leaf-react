@@ -14,30 +14,37 @@ export default function FilterBar() {
   const [filters, setFilters] = useState({
     ingredients: {
       displayLocation: "modal",
+      prefix: "",
       value: null,
     },
     excludedIngredients: {
       displayLocation: "modal",
+      prefix: "",
       value: null,
     },
     difficultyLevel: {
       displayLocation: "filtersList",
+      prefix: "Difficulty level: ",
       value: null,
     },
-    preperationTime: {
+    preparationTime: {
       displayLocation: "filtersList",
+      prefix: "Preparation time: ",
       value: null,
     },
     portionsAmount: {
       displayLocation: "filtersList",
+      prefix: "Portions amount: ",
       value: null,
     },
     rating: {
       displayLocation: "filtersList",
+      prefix: "",
       value: null,
     },
     sortBy: {
       displayLocation: "dropdown",
+      prefix: "",
       value: null,
     },
   });
@@ -61,8 +68,8 @@ export default function FilterBar() {
           <FilterModal onFiltersChange={setFilters}></FilterModal>
         </div>
 
-        <div className="navbar-center grow-1 max-md:hidden">
-          <ActiveFilters filters={filters}></ActiveFilters>
+        <div className="navbar-center flex gap-2 grow-1 max-md:hidden">
+          <ActiveFilters filters={filters} onFilterDelete={setFilters}></ActiveFilters>
         </div>
 
         <div className="navbar-end w-auto items-center gap-4 ml-auto">

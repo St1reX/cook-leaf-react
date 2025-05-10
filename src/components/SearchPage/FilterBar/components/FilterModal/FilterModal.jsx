@@ -4,9 +4,11 @@ import DifficultyLevel from "./FilteringOptions/DifficultyLevel";
 import PreperationTime from "./FilteringOptions/PreperationTime";
 import PortionsAmount from "./FilteringOptions/PortionsAmount";
 import Rating from "./FilteringOptions/Rating";
-import { handleDifficultyLevelChange, handlePreparationTimeChange } from "../FilterHandlers/FilterHandlers";
-
-import "./FilterModal.css";
+import {
+  handleDifficultyLevelChange,
+  handlePortionsAmountChange,
+  handlePreparationTimeChange,
+} from "../FilterHandlers/FilterHandlers";
 
 export default function FilterModal({ onFiltersChange }) {
   return (
@@ -31,7 +33,7 @@ export default function FilterModal({ onFiltersChange }) {
               </button>
             </div>
 
-            <div className="modal-body">
+            <div className="modal-body flex flex-col gap-[27px]">
               <Ingredient></Ingredient>
               <div className="divider"></div>
               <ExcludedIngredient></ExcludedIngredient>
@@ -44,7 +46,9 @@ export default function FilterModal({ onFiltersChange }) {
                 onChange={(newTime) => handlePreparationTimeChange(newTime, onFiltersChange)}
               ></PreperationTime>
               <div className="divider"></div>
-              <PortionsAmount></PortionsAmount>
+              <PortionsAmount
+                onChange={(newAmount) => handlePortionsAmountChange(newAmount, onFiltersChange)}
+              ></PortionsAmount>
               <div className="divider"></div>
               <Rating></Rating>
             </div>

@@ -1,8 +1,13 @@
 import { useState } from "react";
 
-export default function PortionsAmount() {
-  const [portionsAmount, setPortions] = useState(null);
-  const handlePortionsChange = (e) => setPortions(e.target.value === portionsAmount ? null : e.target.value);
+export default function PortionsAmount({ onChange }) {
+  const [selectedPortionsAmount, setPortionsAmount] = useState(null);
+
+  const handleLocalChange = (e) => {
+    const newPortionsAmount = e.target.value === selectedPortionsAmount ? null : e.target.value;
+    setPortionsAmount(newPortionsAmount);
+    onChange(newPortionsAmount);
+  };
 
   const portions = ["1", "2", "4", "6", "8+"];
 
@@ -17,8 +22,8 @@ export default function PortionsAmount() {
                 type="checkbox"
                 className="checkbox hidden"
                 value={value}
-                checked={value === portionsAmount}
-                onChange={handlePortionsChange}
+                checked={value === selectedPortionsAmount}
+                onChange={handleLocalChange}
               />
               <span className="flex justify-center items-center label-text w-full text-lg font-medium text-start">
                 {value}
