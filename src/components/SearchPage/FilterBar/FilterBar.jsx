@@ -3,7 +3,6 @@ import Waves from "node-waves";
 import FilterModal from "./components/FilterModal/FilterModal";
 import SortByDropdown from "./components/SortByDropdown/SortByDropdown";
 import ActiveFilters from "./components/ActiveFilters/ActiveFilters";
-import { handleSortChange } from "./components/FilterHandlers/FilterHandlers";
 
 export default function FilterBar() {
   useEffect(() => {
@@ -39,7 +38,7 @@ export default function FilterBar() {
     },
     rating: {
       displayLocation: "filtersList",
-      prefix: "",
+      prefix: "Rating: ",
       value: null,
     },
     sortBy: {
@@ -68,12 +67,12 @@ export default function FilterBar() {
           <FilterModal onFiltersChange={setFilters}></FilterModal>
         </div>
 
-        <div className="navbar-center flex gap-2 grow-1 max-md:hidden">
+        <div className="navbar-center flex gap-2 grow-1 max-md:hidden flex-wrap">
           <ActiveFilters filters={filters} onFilterDelete={setFilters}></ActiveFilters>
         </div>
 
         <div className="navbar-end w-auto items-center gap-4 ml-auto">
-          <SortByDropdown onChange={(newSort) => handleSortChange(newSort, setFilters)}></SortByDropdown>
+          <SortByDropdown onSortChange={setFilters}></SortByDropdown>
         </div>
       </nav>
     </>

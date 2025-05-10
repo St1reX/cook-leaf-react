@@ -1,39 +1,19 @@
-export const handleSortChange = (newSort, setFilters) => {
+export const handleFilterUpdate = (filterName, newValue, setFilters) => {
   setFilters((prevFilters) => ({
     ...prevFilters,
-    sortBy: {
-      ...prevFilters.sortBy,
-      value: newSort,
+    [filterName]: {
+      ...prevFilters[filterName],
+      value: newValue,
     },
   }));
 };
 
-export const handleDifficultyLevelChange = (newLevel, setFilters) => {
+export const handleFilterDelete = (filterName, setFilters) => {
   setFilters((prevFilters) => ({
     ...prevFilters,
-    difficultyLevel: {
-      ...prevFilters.difficultyLevel,
-      value: newLevel,
-    },
-  }));
-};
-
-export const handlePreparationTimeChange = (newTime, setFilters) => {
-  setFilters((prevFilters) => ({
-    ...prevFilters,
-    preparationTime: {
-      ...prevFilters.preparationTime,
-      value: newTime,
-    },
-  }));
-};
-
-export const handlePortionsAmountChange = (newAmount, setFilters) => {
-  setFilters((prevFilters) => ({
-    ...prevFilters,
-    portionsAmount: {
-      ...prevFilters.portionsAmount,
-      value: newAmount,
+    [filterName]: {
+      ...prevFilters[filterName],
+      value: null,
     },
   }));
 };

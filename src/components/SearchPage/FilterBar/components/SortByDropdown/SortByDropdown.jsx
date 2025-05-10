@@ -1,6 +1,8 @@
 import { useState } from "react";
 
-export default function SortByDropdown({ onChange }) {
+import { handleFilterUpdate } from "../FilterHandlers/FilterHandlers";
+
+export default function SortByDropdown({ onSortChange }) {
   const [sort, setSort] = useState("null");
 
   const sortingOptions = [
@@ -45,7 +47,7 @@ export default function SortByDropdown({ onChange }) {
                 checked={sort === value}
                 onChange={() => {
                   setSort(value);
-                  onChange(value);
+                  handleFilterUpdate("sortBy", value, onSortChange);
                 }}
               />
               <label

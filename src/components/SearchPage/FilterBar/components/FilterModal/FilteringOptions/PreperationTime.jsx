@@ -1,12 +1,14 @@
 import { useState } from "react";
 
-export default function PreperationTime({ onChange }) {
+import { handleFilterUpdate } from "../../FilterHandlers/FilterHandlers";
+
+export default function PreperationTime({ onPreparationTimeChange }) {
   const [selectedTime, setSelectedTime] = useState(null);
 
   const handleLocalChange = (e) => {
     const newTime = e.target.value === selectedTime ? null : e.target.value;
     setSelectedTime(newTime);
-    onChange(newTime);
+    handleFilterUpdate("preparationTime", newTime, onPreparationTimeChange);
   };
 
   const time = ["≤15", "≤30", "≤45"];

@@ -1,12 +1,14 @@
 import { useState } from "react";
 
-export default function DifficultyLevel({ onChange }) {
+import { handleFilterUpdate } from "../../FilterHandlers/FilterHandlers";
+
+export default function DifficultyLevel({ onDifficultyChange }) {
   const [selectedLevel, setSelectedLevel] = useState(null);
 
   const handleLocalChange = (e) => {
     let newLevel = e.target.value === selectedLevel ? null : e.target.value;
     setSelectedLevel(newLevel);
-    onChange(newLevel);
+    handleFilterUpdate("difficultyLevel", newLevel, onDifficultyChange);
   };
 
   const levels = ["easy", "average", "hard"];

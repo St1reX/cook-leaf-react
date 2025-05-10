@@ -4,11 +4,6 @@ import DifficultyLevel from "./FilteringOptions/DifficultyLevel";
 import PreperationTime from "./FilteringOptions/PreperationTime";
 import PortionsAmount from "./FilteringOptions/PortionsAmount";
 import Rating from "./FilteringOptions/Rating";
-import {
-  handleDifficultyLevelChange,
-  handlePortionsAmountChange,
-  handlePreparationTimeChange,
-} from "../FilterHandlers/FilterHandlers";
 
 export default function FilterModal({ onFiltersChange }) {
   return (
@@ -38,17 +33,11 @@ export default function FilterModal({ onFiltersChange }) {
               <div className="divider"></div>
               <ExcludedIngredient></ExcludedIngredient>
               <div className="divider"></div>
-              <DifficultyLevel
-                onChange={(newLevel) => handleDifficultyLevelChange(newLevel, onFiltersChange)}
-              ></DifficultyLevel>
+              <DifficultyLevel onDifficultyChange={onFiltersChange}></DifficultyLevel>
               <div className="divider"></div>
-              <PreperationTime
-                onChange={(newTime) => handlePreparationTimeChange(newTime, onFiltersChange)}
-              ></PreperationTime>
+              <PreperationTime onPreparationTimeChange={onFiltersChange}></PreperationTime>
               <div className="divider"></div>
-              <PortionsAmount
-                onChange={(newAmount) => handlePortionsAmountChange(newAmount, onFiltersChange)}
-              ></PortionsAmount>
+              <PortionsAmount onPortionsAmountChange={onFiltersChange}></PortionsAmount>
               <div className="divider"></div>
               <Rating></Rating>
             </div>

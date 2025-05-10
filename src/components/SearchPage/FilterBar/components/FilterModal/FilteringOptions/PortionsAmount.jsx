@@ -1,12 +1,14 @@
 import { useState } from "react";
 
-export default function PortionsAmount({ onChange }) {
+import { handleFilterUpdate } from "../../FilterHandlers/FilterHandlers";
+
+export default function PortionsAmount({ onPortionsAmountChange }) {
   const [selectedPortionsAmount, setPortionsAmount] = useState(null);
 
   const handleLocalChange = (e) => {
     const newPortionsAmount = e.target.value === selectedPortionsAmount ? null : e.target.value;
     setPortionsAmount(newPortionsAmount);
-    onChange(newPortionsAmount);
+    handleFilterUpdate("portionsAmount", newPortionsAmount, onPortionsAmountChange);
   };
 
   const portions = ["1", "2", "4", "6", "8+"];
