@@ -1,10 +1,10 @@
-import useRecipesQuery from "../../../queries/useRecipesQuery";
+import { useRecipes } from "../../../context/RecipesContext";
 import formatTime from "../../../utils/formatTIme";
 import ShowMore from "./components/ShowMore";
 import { Link } from "react-router-dom";
 
 export default function Recipes() {
-  const { data: recipes, isLoading, isError } = useRecipesQuery();
+  const { recipes, isLoading } = useRecipes();
 
   return (
     <>

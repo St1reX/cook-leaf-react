@@ -1,14 +1,17 @@
-import { useState } from "react";
-
 import { handleFilterUpdate } from "../../FilterHandlers/FilterHandlers";
+import { useRecipes } from "../../../../../../context/RecipesContext";
 
-export default function DifficultyLevel({ onDifficultyChange }) {
-  const [selectedLevel, setSelectedLevel] = useState(null);
+export default function DifficultyLevel() {
+  const {
+    filters: {
+      difficultyLevel: { value: selectedLevel },
+    },
+    setFilters,
+  } = useRecipes();
 
   const handleLocalChange = (e) => {
     let newLevel = e.target.value === selectedLevel ? null : e.target.value;
-    setSelectedLevel(newLevel);
-    handleFilterUpdate("difficultyLevel", newLevel, onDifficultyChange);
+    handleFilterUpdate("difficultyLevel", newLevel, setFilters);
   };
 
   const levels = ["easy", "average", "hard"];

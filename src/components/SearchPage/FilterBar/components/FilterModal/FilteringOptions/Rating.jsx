@@ -1,6 +1,27 @@
 import RatingStars from "../../../../../Shared/RatingStars/RatingStars";
+import { useRecipes } from "../../../../../../context/RecipesContext";
+import { handleFilterUpdate } from "../../FilterHandlers/FilterHandlers";
 
-export default function Rating({ onRatingChange }) {
+export default function Rating() {
+  const {
+    filters: {
+      rating: { value: selectedRatings },
+    },
+    setFilters,
+  } = useRecipes();
+
+  const handleLocalChange = (e) => {
+    const value = Number(e.target.value);
+    let newRatings = [];
+
+    if (selectedRatings?.includes(value)) {
+      newRatings = selectedRatings.filter((v) => v !== value);
+    } else {
+      newRatings = [...selectedRatings, value].sort((a, b) => a - b);
+    }
+    handleFilterUpdate("rating", newRatings, setFilters);
+  };
+
   return (
     <>
       <div className="w-full">
@@ -10,7 +31,14 @@ export default function Rating({ onRatingChange }) {
           {[1, 2, 3, 4, 5].map((value) => (
             <li key={value} className="flex justify-between items-center gap-1 mb-3">
               <div className="flex items-center">
-                <input type="checkbox" className="checkbox checkbox-primary mr-2" id={`rating-${value}`} />
+                <input
+                  type="checkbox"
+                  className="checkbox checkbox-primary mr-2"
+                  id={`rating-${value}`}
+                  value={value}
+                  checked={selectedRatings.includes(value)}
+                  onChange={handleLocalChange}
+                />
                 <RatingStars
                   starsAmount={value}
                   isInteractive={false}

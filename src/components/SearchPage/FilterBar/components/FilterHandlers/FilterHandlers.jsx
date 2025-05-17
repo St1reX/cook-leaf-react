@@ -8,12 +8,12 @@ export const handleFilterUpdate = (filterName, newValue, setFilters) => {
   }));
 };
 
-export const handleFilterDelete = (filterName, setFilters) => {
+export const handleFilterDelete = (filterName, setFilters, newValue = null) => {
   setFilters((prevFilters) => ({
     ...prevFilters,
     [filterName]: {
       ...prevFilters[filterName],
-      value: null,
+      value: newValue,
     },
   }));
 };

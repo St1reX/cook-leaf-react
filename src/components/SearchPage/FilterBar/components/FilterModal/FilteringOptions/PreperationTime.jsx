@@ -1,14 +1,17 @@
-import { useState } from "react";
-
 import { handleFilterUpdate } from "../../FilterHandlers/FilterHandlers";
+import { useRecipes } from "../../../../../../context/RecipesContext";
 
 export default function PreperationTime({ onPreparationTimeChange }) {
-  const [selectedTime, setSelectedTime] = useState(null);
+  const {
+    filters: {
+      preparationTime: { value: selectedTime },
+    },
+    setFilters,
+  } = useRecipes();
 
   const handleLocalChange = (e) => {
     const newTime = e.target.value === selectedTime ? null : e.target.value;
-    setSelectedTime(newTime);
-    handleFilterUpdate("preparationTime", newTime, onPreparationTimeChange);
+    handleFilterUpdate("preparationTime", newTime, setFilters);
   };
 
   const time = ["≤15", "≤30", "≤45"];

@@ -10,44 +10,6 @@ export default function FilterBar() {
     Waves.attach("#filter-button");
   }, []);
 
-  const [filters, setFilters] = useState({
-    ingredients: {
-      displayLocation: "modal",
-      prefix: "",
-      value: null,
-    },
-    excludedIngredients: {
-      displayLocation: "modal",
-      prefix: "",
-      value: null,
-    },
-    difficultyLevel: {
-      displayLocation: "filtersList",
-      prefix: "Difficulty level: ",
-      value: null,
-    },
-    preparationTime: {
-      displayLocation: "filtersList",
-      prefix: "Preparation time: ",
-      value: null,
-    },
-    portionsAmount: {
-      displayLocation: "filtersList",
-      prefix: "Portions amount: ",
-      value: null,
-    },
-    rating: {
-      displayLocation: "filtersList",
-      prefix: "Rating: ",
-      value: null,
-    },
-    sortBy: {
-      displayLocation: "dropdown",
-      prefix: "",
-      value: null,
-    },
-  });
-
   return (
     <>
       <nav className="navbar rounded-box flex w-full items-center justify-start gap-6 mb-4">
@@ -64,15 +26,15 @@ export default function FilterBar() {
             Filters
           </button>
 
-          <FilterModal onFiltersChange={setFilters}></FilterModal>
+          <FilterModal></FilterModal>
         </div>
 
         <div className="navbar-center flex gap-2 grow-1 max-md:hidden flex-wrap">
-          <ActiveFilters filters={filters} onFilterDelete={setFilters}></ActiveFilters>
+          <ActiveFilters></ActiveFilters>
         </div>
 
         <div className="navbar-end w-auto items-center gap-4 ml-auto">
-          <SortByDropdown onSortChange={setFilters}></SortByDropdown>
+          <SortByDropdown></SortByDropdown>
         </div>
       </nav>
     </>

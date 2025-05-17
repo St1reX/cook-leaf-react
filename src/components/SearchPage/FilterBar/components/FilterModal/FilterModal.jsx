@@ -1,11 +1,11 @@
-import Ingredient from "./FilteringOptions/Ingredients";
+import Ingredient from "./FilteringOptions/Ingredients/Ingredients";
 import ExcludedIngredient from "./FilteringOptions/ExcludedIngredients";
 import DifficultyLevel from "./FilteringOptions/DifficultyLevel";
 import PreperationTime from "./FilteringOptions/PreperationTime";
 import PortionsAmount from "./FilteringOptions/PortionsAmount";
 import Rating from "./FilteringOptions/Rating";
 
-export default function FilterModal({ onFiltersChange }) {
+export default function FilterModal() {
   return (
     <>
       <div
@@ -33,13 +33,13 @@ export default function FilterModal({ onFiltersChange }) {
               <div className="divider"></div>
               <ExcludedIngredient></ExcludedIngredient>
               <div className="divider"></div>
-              <DifficultyLevel onDifficultyChange={onFiltersChange}></DifficultyLevel>
+              <DifficultyLevel></DifficultyLevel>
               <div className="divider"></div>
-              <PreperationTime onPreparationTimeChange={onFiltersChange}></PreperationTime>
+              <PreperationTime></PreperationTime>
               <div className="divider"></div>
-              <PortionsAmount onPortionsAmountChange={onFiltersChange}></PortionsAmount>
+              <PortionsAmount></PortionsAmount>
               <div className="divider"></div>
-              <Rating onRatingChange={onFiltersChange}></Rating>
+              <Rating></Rating>
             </div>
 
             <div className="modal-footer pt-2">

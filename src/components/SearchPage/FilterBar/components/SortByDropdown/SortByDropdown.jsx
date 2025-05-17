@@ -1,9 +1,15 @@
 import { useState } from "react";
 
 import { handleFilterUpdate } from "../FilterHandlers/FilterHandlers";
+import { useRecipes } from "../../../../../context/RecipesContext";
 
-export default function SortByDropdown({ onSortChange }) {
-  const [sort, setSort] = useState("null");
+export default function SortByDropdown() {
+  const {
+    filters: {
+      sortBy: { value: sort },
+    },
+    setFilters,
+  } = useRecipes();
 
   const sortingOptions = [
     { label: "Newest", value: "createdAt" },
@@ -46,8 +52,7 @@ export default function SortByDropdown({ onSortChange }) {
                 value={value}
                 checked={sort === value}
                 onChange={() => {
-                  setSort(value);
-                  handleFilterUpdate("sortBy", value, onSortChange);
+                  handleFilterUpdate("sortBy", value, setFilters);
                 }}
               />
               <label

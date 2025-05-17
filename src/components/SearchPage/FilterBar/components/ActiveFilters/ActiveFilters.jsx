@@ -1,8 +1,11 @@
+import { useRecipes } from "../../../../../context/RecipesContext";
 import { handleFilterDelete } from "../FilterHandlers/FilterHandlers";
 
-export default function ActiveFilters({ filters, onFilterDelete }) {
+export default function ActiveFilters() {
+  const { filters, setFilters } = useRecipes();
+
   const filtersToDisplay = Object.entries(filters).filter(([key, { displayLocation, value }]) => {
-    return displayLocation === "filtersList" && value != null;
+    return displayLocation === "filtersList" && value != null && value.length > 0;
   });
 
   return (
@@ -11,7 +14,7 @@ export default function ActiveFilters({ filters, onFilterDelete }) {
         Array.isArray(value) ? (
           <button
             key={key}
-            onClick={() => handleFilterDelete(key, onFilterDelete)}
+            onClick={() => handleFilterDelete(key, setFilters, [])}
             className="btn btn-soft btn-primary text-accent/80"
           >
             {prefix + value.join(", ")}
@@ -20,7 +23,7 @@ export default function ActiveFilters({ filters, onFilterDelete }) {
         ) : (
           <button
             key={key}
-            onClick={() => handleFilterDelete(key, onFilterDelete)}
+            onClick={() => handleFilterDelete(key, setFilters)}
             className="btn btn-soft btn-primary text-accent/80"
           >
             {prefix + value}
