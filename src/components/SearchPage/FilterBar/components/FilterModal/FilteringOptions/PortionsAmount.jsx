@@ -1,7 +1,7 @@
 import { handleFilterUpdate } from "../../FilterHandlers/FilterHandlers";
 import { useRecipes } from "../../../../../../context/RecipesContext";
 
-export default function PortionsAmount({ onPortionsAmountChange }) {
+export default function PortionsAmount() {
   const {
     filters: {
       portionsAmount: { value: selectedPortionsAmount },
