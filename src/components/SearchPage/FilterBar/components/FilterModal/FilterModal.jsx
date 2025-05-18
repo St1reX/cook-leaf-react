@@ -1,4 +1,4 @@
-import Ingredient from "./FilteringOptions/Ingredients/Ingredients";
+import Ingredient from "./FilteringOptions/Ingredients";
 import ExcludedIngredient from "./FilteringOptions/ExcludedIngredients";
 import DifficultyLevel from "./FilteringOptions/DifficultyLevel";
 import PreperationTime from "./FilteringOptions/PreperationTime";

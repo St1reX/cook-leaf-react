@@ -1,4 +1,4 @@
-import { handleFilterUpdate } from "../../FilterHandlers/FilterHandlers";
+import { handleFilterUpdate } from "../../../../../../utils/FiltersHandler";
 import { useRecipes } from "../../../../../../context/RecipesContext";
 
 export default function DifficultyLevel() {

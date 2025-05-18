@@ -1,6 +1,6 @@
 import RatingStars from "../../../../../Shared/RatingStars/RatingStars";
 import { useRecipes } from "../../../../../../context/RecipesContext";
-import { handleFilterUpdate } from "../../FilterHandlers/FilterHandlers";
+import { handleFilterUpdate } from "../../../../../../utils/FiltersHandler";
 
 export default function Rating() {
   const {

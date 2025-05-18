@@ -1,5 +1,5 @@
 import { useRecipes } from "../../../../../context/RecipesContext";
-import { handleFilterDelete } from "../FilterHandlers/FilterHandlers";
+import { handleFilterDelete } from "../../../../../utils/FiltersHandler";
 
 export default function ActiveFilters() {
   const { filters, setFilters } = useRecipes();
