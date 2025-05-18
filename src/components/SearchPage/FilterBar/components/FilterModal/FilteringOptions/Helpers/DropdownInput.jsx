@@ -17,8 +17,6 @@ const DropdownInput = ({ type }) => {
     handleFilterUpdate(type, updatedArray, setFilters);
     setIsFocused(false);
     setInputValue("");
-
-    console.log(updatedArray);
   };
 
   const { data: ingredients, isLoading, isError } = useIngredientsQuery(inputValue);
@@ -33,7 +31,7 @@ const DropdownInput = ({ type }) => {
         value={inputValue}
         onChange={(e) => setInputValue(e.target.value)}
         onFocus={() => setIsFocused(true)}
-        onBlur={() => setIsFocused(false)}
+        onBlur={() => setTimeout(() => setIsFocused(false), 500)}
         className="input input-xl max-w-sm"
       />
       {shouldShowDropdown && (

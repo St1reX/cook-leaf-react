@@ -31,7 +31,6 @@ export default function Ingredients() {
               />
             </button>
           ))}
-
           <label htmlFor="ingredientsInput" className="label-text">
             No ingredients selected
           </label>
