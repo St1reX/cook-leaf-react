@@ -20,7 +20,11 @@ const DropdownInput = ({ type }) => {
   };
 
   const { data: ingredients, isLoading, isError } = useIngredientsQuery(inputValue);
-  const filteredIngredients = ingredients?.filter((value) => !currentArray.includes(value.ingredient_name));
+  const filteredIngredients = ingredients?.filter(
+    (value) =>
+      !filters["ingredients"].value.includes(value.ingredient_name) &&
+      !filters["excludedIngredients"].value.includes(value.ingredient_name)
+  );
 
   return (
     <div className="relative inline-block w-full max-w-sm">

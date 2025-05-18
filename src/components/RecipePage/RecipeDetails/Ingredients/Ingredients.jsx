@@ -1,4 +1,8 @@
+import { useRecipeDetails } from "../../../../context/RecipeDetailsContext";
+
 export default function Ingredients() {
+  const { recipe } = useRecipeDetails();
+
   const ingredients = [
     {
       image: "https://assets.tmecosys.com/image/upload/t_web_ingredient_48x48/icons/ingredient_icons/1146", // uzupełnij ścieżkę do zdjęcia
@@ -125,17 +129,21 @@ export default function Ingredients() {
     <>
       <div className="flex flex-col gap-4 p-8 shadow-xl w-2/5 rounded-lg">
         <h4 className="text-xl mb-6">Ingredients</h4>
-        {ingredients.map((value, index) => (
-          <div key={index} className="flex justify-between items-center gap-4 mb-4">
-            <div className="">
-              <img src={value.image} alt={value.name} className="w-[48px] h-[48px] object-cover" />
+        {recipe.ingredients.map(({ ingredient, amount, unit }, index) => (
+          <div key={ingredient.ingredient_name} className="flex justify-between items-center gap-5 mb-4">
+            <div>
+              <img
+                src={ingredient.photo_path}
+                alt={`${ingredient.ingredient_name} icon`}
+                className="w-[40px] h-[40px] object-cover rounded-full"
+              />
             </div>
             <div className="flex flex-col items-start grow g-2">
-              <h5>{value.name}</h5>
-              <span className="text-accent/80 text-sm">{value.note}</span>
+              <h5>{ingredient.ingredient_name}</h5>
+              <span className="text-accent/80 text-sm"></span>
             </div>
             <div>
-              <span className="text-accent/80">{value.quantity + " " + value.unit}</span>
+              <span className="text-accent/80">{amount + " " + unit.unit_name}</span>
             </div>
           </div>
         ))}

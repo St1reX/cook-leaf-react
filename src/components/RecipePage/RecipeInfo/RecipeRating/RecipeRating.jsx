@@ -10,7 +10,9 @@ export default function RecipeRating({ rating, reviewsAmount }) {
           isInteractive={false}
         ></RatingStars>
         <span className="font-semibold mr-4 text-lg">{rating}</span>
-        <span className="text-accent/60">{reviewsAmount} reviews</span>
+        <span className="text-accent/60">
+          {reviewsAmount} {reviewsAmount == 1 ? "review" : "reviews"}
+        </span>
       </div>
     </>
   );

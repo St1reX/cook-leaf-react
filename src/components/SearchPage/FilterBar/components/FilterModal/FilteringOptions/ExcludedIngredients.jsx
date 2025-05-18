@@ -22,18 +22,26 @@ export default function ExcludedIngredients() {
         <h3 className="text-xl mb-3">Excluded ingredients</h3>
         <DropdownInput type={"excludedIngredients"}></DropdownInput>
         <div className="mt-2">
-          {currentIngredients.map((value, key) => (
-            <button onClick={() => handleLocalChange(value)} key={value} className="btn btn-soft btn-warning">
-              {value}{" "}
-              <span
-                className="icon-[mingcute--close-line]"
-                style={{ width: 24, height: 24, color: "#000" }}
-              />
-            </button>
-          ))}
-          <label htmlFor="excludedIngredientsInput" className="label-text">
-            No ingredients selected
-          </label>
+          {currentIngredients.length == 0 && (
+            <label htmlFor="excludedIngredientsInput" className="label-text">
+              No excluded ingredients selected
+            </label>
+          )}
+
+          {!currentIngredients.length == 0 &&
+            currentIngredients.map((value, key) => (
+              <button
+                onClick={() => handleLocalChange(value)}
+                key={value}
+                className="btn btn-soft btn-warning"
+              >
+                {value}{" "}
+                <span
+                  className="icon-[mingcute--close-line]"
+                  style={{ width: 24, height: 24, color: "#000" }}
+                />
+              </button>
+            ))}
         </div>
       </div>
     </>

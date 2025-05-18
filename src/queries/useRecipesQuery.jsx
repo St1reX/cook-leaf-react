@@ -7,5 +7,6 @@ export default function useRecipesQuery() {
   return useQuery({
     queryFn: () => axios.get(`${apiUrl}/recipes`).then((res) => res.data),
     queryKey: ["recipes"],
+    staleTime: 1000 * 60 * 5,
   });
 }

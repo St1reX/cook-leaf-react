@@ -8,5 +8,6 @@ export default function useIngredientsQuery(prompt) {
     queryFn: () => axios.get(`${apiUrl}/ingredients`, { params: { name: prompt } }).then((res) => res.data),
     queryKey: ["ingredients", prompt],
     enabled: prompt?.trim().length > 0,
+    staleTime: 60 * 1000 * 60,
   });
 }

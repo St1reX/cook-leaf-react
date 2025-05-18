@@ -42,8 +42,6 @@ export default function Recipes() {
           ))
         )}
       </div>
-
-      <ShowMore></ShowMore>
     </>
   );
 }
