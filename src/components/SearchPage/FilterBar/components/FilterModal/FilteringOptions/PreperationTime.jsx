@@ -1,5 +1,6 @@
 import { handleFilterUpdate } from "../../../../../../utils/FiltersHandler";
 import { useRecipes } from "../../../../../../context/RecipesContext";
+import { PREPARATION_TIMES } from "../../../../../../constants/preparationTimes";
 
 export default function PreperationTime({ onPreparationTimeChange }) {
   const {
@@ -14,14 +15,12 @@ export default function PreperationTime({ onPreparationTimeChange }) {
     handleFilterUpdate("preparationTime", newTime, setFilters);
   };
 
-  const time = ["≤15", "≤30", "≤45"];
-
   return (
     <>
       <div className="w-full">
         <h3 className="text-xl mb-3">Preperation time</h3>
         <div className="w-full flex gap-1">
-          {time.map((value) => (
+          {PREPARATION_TIMES.map((value) => (
             <label key={value} className="custom-soft-option flex flex-row items-start">
               <input
                 type="checkbox"
