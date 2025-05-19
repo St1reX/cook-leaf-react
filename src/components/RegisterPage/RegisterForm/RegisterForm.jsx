@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
 import { Notyf } from "notyf";
+import useRegisterMutation from "../../../mutations/useRegisterMutation";
 
 export default function RegisterForm() {
   const notyf = new Notyf({
@@ -12,6 +13,8 @@ export default function RegisterForm() {
       y: "top",
     },
   });
+
+  const registerMutation = useRegisterMutation();
 
   return (
     <>
@@ -35,8 +38,18 @@ export default function RegisterForm() {
                   /[^a-zA-Z0-9]/.test(value)
               ),
           })}
-          onSubmit={async (values, { validateForm, setSubmitting }) => {
-            console.log("Wysyłanie formsa");
+          onSubmit={async (values, { setSubmitting }) => {
+            try {
+              await registerMutation.mutateAsync(values);
+            } catch (error) {
+              if (error.response.status === 400) {
+                notyf.error(`${error.response.data.message}`);
+              } else {
+                notyf.error("Something went wrong.");
+              }
+            } finally {
+              setSubmitting(false);
+            }
           }}
         >
           {({ errors, validateForm }) => (
