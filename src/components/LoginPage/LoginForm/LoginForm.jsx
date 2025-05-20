@@ -1,18 +1,78 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import MailInput from "./LoginFormFields/MailInput/MailInput";
 import PasswordInput from "./LoginFormFields/PasswordInput/PasswordInput";
+import { Notyf } from "notyf";
+import useLoginMutation from "../../../mutations/useLoginMutation";
+import { Formik, Form } from "formik";
+import * as Yup from "yup";
+import { useAuth } from "../../../context/AuthContext";
 
 export default function LoginForm() {
+  const notyf = new Notyf({
+    position: {
+      x: "center",
+      y: "top",
+    },
+  });
+
+  const routerNavigate = useNavigate();
+
+  const loginMutation = useLoginMutation();
+  const { setUser } = useAuth();
+
   return (
     <>
       <div className="w-128 bg-base-200 rounded-lg p-6 mb-8">
         <h4 className="text-2xl mb-2">Login</h4>
         <p className="mb-6">Enter your mail and password to enter recipes kingdom!</p>
-        <form method="post" className="flex flex-col gap-4 justify-center mb-8">
-          <MailInput></MailInput>
-          <PasswordInput></PasswordInput>
-          <button className="w-full btn btn-primary">Login!</button>
-        </form>
+        <Formik
+          initialValues={{ mail: "", password: "" }}
+          validationSchema={Yup.object({
+            mail: Yup.string().email("Provided email address is invalid").required("Mail is required"),
+            password: Yup.string().required("Password is required"),
+          })}
+          onSubmit={async (values, { setSubmitting, resetForm }) => {
+            try {
+              const userData = await loginMutation.mutateAsync(values);
+              setUser(userData);
+
+              notyf.success("You logged in successfully.");
+              setTimeout(() => {
+                resetForm();
+                routerNavigate("/");
+              }, 1500);
+            } catch (error) {
+              if (error?.response?.status === 401) {
+                notyf.error(`${error.response.data.message}`);
+              } else {
+                notyf.error("Something went wrong.");
+              }
+            } finally {
+              setSubmitting(false);
+            }
+          }}
+        >
+          {({ errors, validateForm }) => (
+            <Form method="post" className="flex flex-col gap-4 justify-center mb-8">
+              <MailInput></MailInput>
+              <PasswordInput></PasswordInput>
+
+              <button
+                type="submit"
+                onClick={() =>
+                  validateForm().then(() => {
+                    if (Object.keys(errors).length > 0) {
+                      notyf.error("There are errors in some of the form fields.");
+                    }
+                  })
+                }
+                className="w-full btn btn-primary"
+              >
+                Login
+              </button>
+            </Form>
+          )}
+        </Formik>
         <div className="w-full flex justify-center">
           <Link to={"/register"} className="link link-primary link-animated">
             Don't have an account yet? Sign up now!

@@ -1,6 +1,16 @@
-import RecipeCard from "../../../SearchPage/Recipes/components/RecipeCard";
+import { useAuth } from "../../../../context/AuthContext";
+import RecipeCard from "./RecipeCard/RecipeCard";
 
 export default function FavouriteRecipes() {
+  const {
+    user: { favourite_recipes: favouriteRecipes },
+  } = useAuth();
+
+  //console.log(favouriteRecipes);
+
+  const favourite_recipes_to_display = favouriteRecipes.slice(0, 3);
+  const favourite_recipes_hidden = favouriteRecipes.slice(4, favouriteRecipes.length);
+
   return (
     <>
       <div className="card w-full">
@@ -14,12 +24,20 @@ export default function FavouriteRecipes() {
             </p>
           </div>
 
+          {favourite_recipes_to_display.map((value, index) => (
+            <RecipeCard key={value.recipe_name} recipe={value} recipeNumber={index}></RecipeCard>
+          ))}
+
           <div
             id="favourite-collapse-heading"
             className="collapse hidden w-full overflow-hidden transition-[height] duration-300"
             aria-labelledby="favourite-collapse"
           >
-            <div className="flex justify-start gap-4 items-center flex-wrap w-full"></div>
+            <div className="flex justify-start gap-4 items-center flex-wrap w-full">
+              {favourite_recipes_hidden.map((value, index) => (
+                <RecipeCard key={value.recipe_name} recipe={value} recipeNumber={index}></RecipeCard>
+              ))}
+            </div>
           </div>
 
           <div className="card-actions justify-center">

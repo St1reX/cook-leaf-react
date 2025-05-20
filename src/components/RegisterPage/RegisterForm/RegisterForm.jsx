@@ -38,9 +38,12 @@ export default function RegisterForm() {
                   /[^a-zA-Z0-9]/.test(value)
               ),
           })}
-          onSubmit={async (values, { setSubmitting }) => {
+          onSubmit={async (values, { setSubmitting, resetForm }) => {
             try {
               await registerMutation.mutateAsync(values);
+
+              notyf.success("Your profile has been registered successfully. Now you can log in!");
+              resetForm();
             } catch (error) {
               if (error.response.status === 400) {
                 notyf.error(`${error.response.data.message}`);

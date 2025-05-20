@@ -6,12 +6,20 @@ const apiUrl = import.meta.env.VITE_API_URL;
 
 export const axiosInstance = axios.create({
   baseURL: apiUrl,
+  withCredentials: true,
 });
 
 export function setupInterceptors(auth, navigate) {
   axiosInstance.interceptors.response.use(
     (response) => response,
     (error) => {
+      const originalRequest = error.config;
+
+      // Nie rób nic dla /auth/me — to ogarnie AuthContext
+      if (originalRequest.url.includes("/auth/me")) {
+        return Promise.reject(error);
+      }
+
       if (error.response?.status === 401) {
         auth.logout();
         navigate("/login");
