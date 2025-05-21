@@ -15,23 +15,18 @@ export default function HeartBadge({ recipeID, recipeName }) {
 
     if (!user) {
       notyfInstance.error("You must be logged in to add a recipe to your favorites.");
+      return;
     }
 
-    try {
-      if (isInFavourites) {
-        const response = await deleteFromFavouritesMutation.mutateAsync(recipeID);
-        notyfInstance.success(response.message);
-        setUser((prev) => ({
-          ...prev,
-          favourite_recipes: prev.favourite_recipes.filter((r) => r._id !== recipeID),
-        }));
-      } else {
-        const response = await addToFavouritesMutation.mutateAsync(recipeID);
-        notyfInstance.success(response.message);
-        setUser((prev) => ({ ...prev, favourite_recipes: [...prev.favourite_recipes, { _id: recipeID }] }));
-      }
-    } catch (error) {
-      notyfInstance.error(error.response.data.message);
+    if (isInFavourites) {
+      await deleteFromFavouritesMutation.mutateAsync(recipeID);
+      setUser((prev) => ({
+        ...prev,
+        favourite_recipes: prev.favourite_recipes.filter((r) => r._id !== recipeID),
+      }));
+    } else {
+      await addToFavouritesMutation.mutateAsync(recipeID);
+      setUser((prev) => ({ ...prev, favourite_recipes: [...prev.favourite_recipes, { _id: recipeID }] }));
     }
   };
 
@@ -39,7 +34,7 @@ export default function HeartBadge({ recipeID, recipeName }) {
     <>
       <span
         onClick={handleClick}
-        className="badge badge-primary bg-transparent border-none size-6 rounded-full p-0 absolute top-2 right-2 z-50 cursor-pointer"
+        className="badge badge-primary bg-transparent border-none size-6 rounded-full p-0 absolute top-2 right-2 z-20 cursor-pointer"
       >
         {isInFavourites ? (
           <span className="icon-[mingcute--heart-fill]" style={{ width: 96, height: 96, color: "#f01154" }} />

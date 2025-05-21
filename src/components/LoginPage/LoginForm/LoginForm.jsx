@@ -1,20 +1,13 @@
 import { Link, useNavigate } from "react-router-dom";
 import MailInput from "./LoginFormFields/MailInput/MailInput";
 import PasswordInput from "./LoginFormFields/PasswordInput/PasswordInput";
-import { Notyf } from "notyf";
+import { notyfInstance } from "../../../constants/notyfConfig";
 import useLoginMutation from "../../../mutations/useLoginMutation";
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
 import { useAuth } from "../../../context/AuthContext";
 
 export default function LoginForm() {
-  const notyf = new Notyf({
-    position: {
-      x: "center",
-      y: "top",
-    },
-  });
-
   const routerNavigate = useNavigate();
 
   const loginMutation = useLoginMutation();
@@ -32,24 +25,12 @@ export default function LoginForm() {
             password: Yup.string().required("Password is required"),
           })}
           onSubmit={async (values, { setSubmitting, resetForm }) => {
-            try {
-              const userData = await loginMutation.mutateAsync(values);
-              setUser(userData);
+            const userData = await loginMutation.mutateAsync(values);
+            setUser(userData);
 
-              notyf.success("You logged in successfully.");
-              setTimeout(() => {
-                resetForm();
-                routerNavigate("/");
-              }, 1500);
-            } catch (error) {
-              if (error?.response?.status === 401) {
-                notyf.error(`${error.response.data.message}`);
-              } else {
-                notyf.error("Something went wrong.");
-              }
-            } finally {
-              setSubmitting(false);
-            }
+            resetForm();
+            setSubmitting(false);
+            routerNavigate("/");
           }}
         >
           {({ errors, validateForm }) => (
@@ -62,7 +43,7 @@ export default function LoginForm() {
                 onClick={() =>
                   validateForm().then(() => {
                     if (Object.keys(errors).length > 0) {
-                      notyf.error("There are errors in some of the form fields.");
+                      notyfInstance.error("There are errors in some of the form fields.");
                     }
                   })
                 }

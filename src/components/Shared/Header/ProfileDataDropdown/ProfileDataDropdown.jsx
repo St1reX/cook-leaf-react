@@ -1,23 +1,11 @@
-import { Notyf } from "notyf";
 import { Link } from "react-router-dom";
 import useLogoutMutation from "../../../../mutations/useLogoutMutation";
 
 export default function ProfileDataDropdown({ email, role, profilePic }) {
-  const notyf = new Notyf({
-    position: {
-      x: "center",
-      y: "top",
-    },
-  });
-
   const logoutMutation = useLogoutMutation();
 
   const handleLogout = async () => {
-    try {
-      await logoutMutation.mutateAsync();
-    } catch (error) {
-      notyf.error("Error occurred while loggin you out", error);
-    }
+    await logoutMutation.mutateAsync();
   };
 
   return (

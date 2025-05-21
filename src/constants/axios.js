@@ -1,6 +1,5 @@
 import axios from "axios";
-import { useAuth } from "../context/AuthContext";
-import { Navigate, useNavigate } from "react-router-dom";
+import { notyfInstance } from "./notyfConfig";
 
 const apiUrl = import.meta.env.VITE_API_URL;
 
@@ -9,11 +8,26 @@ export const axiosInstance = axios.create({
   withCredentials: true,
 });
 
+let interceptorsAlreadySet = false;
+
 export function setupInterceptors(auth, navigate) {
+  if (interceptorsAlreadySet) return;
+
+  interceptorsAlreadySet = true;
+
   axiosInstance.interceptors.response.use(
-    (response) => response,
+    (response) => {
+      if (response.data?.message) {
+        notyfInstance.success(response.data.message);
+      }
+      return response;
+    },
     (error) => {
+      const message = error.response?.data?.message || "Wystąpił błąd";
+      notyfInstance.error(message);
+
       const originalRequest = error.config;
+
       if (originalRequest.url.includes("/auth/me")) {
         return Promise.reject(error);
       }
@@ -24,6 +38,7 @@ export function setupInterceptors(auth, navigate) {
       } else if (error.response?.status === 404) {
         navigate("*");
       }
+
       return Promise.reject(error);
     }
   );

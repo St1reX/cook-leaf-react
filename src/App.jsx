@@ -24,7 +24,7 @@ function App() {
 
   useEffect(() => {
     setupInterceptors(auth, navigate);
-  }, [auth, navigate]);
+  }, []);
 
   const siteContent = (
     <>

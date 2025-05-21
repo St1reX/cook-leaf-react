@@ -3,17 +3,10 @@ import PasswordInput from "./RegisterFormFields/PasswordInput/PasswordInput";
 import { Link } from "react-router-dom";
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
-import { Notyf } from "notyf";
+import { notyfInstance } from "../../../constants/notyfConfig";
 import useRegisterMutation from "../../../mutations/useRegisterMutation";
 
 export default function RegisterForm() {
-  const notyf = new Notyf({
-    position: {
-      x: "center",
-      y: "top",
-    },
-  });
-
   const registerMutation = useRegisterMutation();
 
   return (
@@ -39,20 +32,9 @@ export default function RegisterForm() {
               ),
           })}
           onSubmit={async (values, { setSubmitting, resetForm }) => {
-            try {
-              await registerMutation.mutateAsync(values);
-
-              notyf.success("Your profile has been registered successfully. Now you can log in!");
-              resetForm();
-            } catch (error) {
-              if (error.response.status === 400) {
-                notyf.error(`${error.response.data.message}`);
-              } else {
-                notyf.error("Something went wrong.");
-              }
-            } finally {
-              setSubmitting(false);
-            }
+            await registerMutation.mutateAsync(values);
+            resetForm();
+            setSubmitting(false);
           }}
         >
           {({ errors, validateForm }) => (
@@ -65,7 +47,7 @@ export default function RegisterForm() {
                 onClick={() =>
                   validateForm().then(() => {
                     if (Object.keys(errors).length > 0) {
-                      notyf.error("There are errors in some of the form fields.");
+                      notyfInstance.error("There are errors in some of the form fields.");
                     }
                   })
                 }
