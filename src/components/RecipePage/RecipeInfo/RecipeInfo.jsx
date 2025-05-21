@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import RecipeRating from "./RecipeRating/RecipeRating";
 import RecipeMeta from "./RecipeMeta/RecipeMeta";
 import { useRecipeDetails } from "../../../context/RecipeDetailsContext";
+import ScheduleRecipe from "./ScheduleRecipe/ScheduleRecipe";
 
 export default function RecipeInfo() {
   const { recipe } = useRecipeDetails();
@@ -9,6 +10,7 @@ export default function RecipeInfo() {
   return (
     <>
       <div className="w-1/2 flex flex-col justify-center">
+        <ScheduleRecipe recipeId={recipe._id}></ScheduleRecipe>
         <div className="flex justify-start gap-2 mb-4">
           {recipe.categories.map((value, index) => (
             <span
