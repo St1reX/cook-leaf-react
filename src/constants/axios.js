@@ -14,8 +14,6 @@ export function setupInterceptors(auth, navigate) {
     (response) => response,
     (error) => {
       const originalRequest = error.config;
-
-      // Nie rób nic dla /auth/me — to ogarnie AuthContext
       if (originalRequest.url.includes("/auth/me")) {
         return Promise.reject(error);
       }

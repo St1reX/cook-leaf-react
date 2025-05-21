@@ -1,9 +1,9 @@
 import { useMutation } from "@tanstack/react-query";
 import { axiosInstance } from "../constants/axios";
 
-export default function useAddToFavouritesMutation() {
+export default function useDeleteFromFavouritesMutation() {
   return useMutation({
     mutationFn: (recipeID) =>
-      axiosInstance.post("/user/favourites", { recipe_id: recipeID }).then((res) => res.data),
+      axiosInstance.delete(`/user/favourites`, { data: { recipe_id: recipeID } }).then((res) => res.data),
   });
 }

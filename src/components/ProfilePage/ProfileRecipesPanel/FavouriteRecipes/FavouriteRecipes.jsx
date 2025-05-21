@@ -1,5 +1,5 @@
 import { useAuth } from "../../../../context/AuthContext";
-import RecipeCard from "./RecipeCard/RecipeCard";
+import RecipeCard from "../../../Shared/RecipeCard/RecipeCard";
 
 export default function FavouriteRecipes() {
   const {
@@ -25,7 +25,12 @@ export default function FavouriteRecipes() {
           </div>
 
           {favourite_recipes_to_display.map((value, index) => (
-            <RecipeCard key={value.recipe_name} recipe={value} recipeNumber={index}></RecipeCard>
+            <RecipeCard
+              key={value.recipe_name}
+              recipe={value}
+              recipeNumber={index}
+              showReviewsCount={false}
+            ></RecipeCard>
           ))}
 
           <div
@@ -35,7 +40,12 @@ export default function FavouriteRecipes() {
           >
             <div className="flex justify-start gap-4 items-center flex-wrap w-full">
               {favourite_recipes_hidden.map((value, index) => (
-                <RecipeCard key={value.recipe_name} recipe={value} recipeNumber={index}></RecipeCard>
+                <RecipeCard
+                  key={value.recipe_name}
+                  recipe={value}
+                  recipeNumber={index}
+                  showReviewsCount={false}
+                ></RecipeCard>
               ))}
             </div>
           </div>

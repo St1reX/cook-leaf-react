@@ -1,8 +1,5 @@
 import { useRecipes } from "../../../context/RecipesContext";
-import formatTime from "../../../utils/formatTIme";
-import RecipeCard from "./components/RecipeCard";
-import ShowMore from "./components/ShowMore";
-import { Link } from "react-router-dom";
+import RecipeCard from "../../Shared/RecipeCard/RecipeCard";
 
 export default function Recipes() {
   const { recipes, isLoading } = useRecipes();
