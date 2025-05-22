@@ -35,7 +35,7 @@ export default function Ingredients() {
                 key={value}
                 className="btn btn-soft btn-primary"
               >
-                {value}{" "}
+                {value}
                 <span
                   className="icon-[mingcute--close-line]"
                   style={{ width: 24, height: 24, color: "#000" }}

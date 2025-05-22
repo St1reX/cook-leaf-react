@@ -9,14 +9,9 @@ export default function Profile() {
   const { user, setUser } = useAuth();
   const { data: userData, isLoading } = useProfileDetailsQuery(user?._id);
 
-  //Refresh user data on page load
-  useEffect(() => {
-    if (!isLoading && userData) {
-      setUser(userData);
-    }
-  }, [isLoading, userData]);
-
-  if (!user) return <Navigate to="/login" />;
+  if (!isLoading) {
+    setUser(userData);
+  }
 
   return (
     <>

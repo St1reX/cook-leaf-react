@@ -34,7 +34,6 @@ export function setupInterceptors(auth, navigate) {
 
       if (error.response?.status === 401) {
         auth.logout();
-        navigate("/login");
       } else if (error.response?.status === 404) {
         navigate("*");
       }

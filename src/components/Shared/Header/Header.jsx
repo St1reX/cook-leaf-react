@@ -55,10 +55,7 @@ export default function Header() {
                   </Link>
                 </li>
                 <li>
-                  <ProfileDataDropdown
-                    email={user.mail}
-                    profilePic={user.profile_picture_path}
-                  ></ProfileDataDropdown>
+                  <ProfileDataDropdown user={user}></ProfileDataDropdown>
                 </li>
               </>
             )}

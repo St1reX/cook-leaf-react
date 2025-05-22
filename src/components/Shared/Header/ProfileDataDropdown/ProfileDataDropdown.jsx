@@ -1,7 +1,8 @@
 import { Link } from "react-router-dom";
 import useLogoutMutation from "../../../../mutations/useLogoutMutation";
+import { capitalizeFirstLetter } from "../../../../utils/stringUtils";
 
-export default function ProfileDataDropdown({ email, role, profilePic }) {
+export default function ProfileDataDropdown({ user }) {
   const logoutMutation = useLogoutMutation();
 
   const handleLogout = async () => {
@@ -22,7 +23,7 @@ export default function ProfileDataDropdown({ email, role, profilePic }) {
       >
         <div className="avatar">
           <div className="size-9.5 rounded-full">
-            <img src={profilePic} alt="User Avatar" />
+            <img src={user.profile_picture_path} alt="User Avatar" />
           </div>
         </div>
       </button>
@@ -35,12 +36,12 @@ export default function ProfileDataDropdown({ email, role, profilePic }) {
         <li className="dropdown-header gap-2">
           <div className="avatar">
             <div className="w-10 rounded-full">
-              <img src={profilePic} alt="User Avatar" />
+              <img src={user.profile_picture_path} alt="User Avatar" />
             </div>
           </div>
           <div>
-            <h6 className="text-base-content text-base font-semibold">{email}</h6>
-            <small className="text-base-content/50">Admin</small>
+            <h6 className="text-base-content text-base font-semibold">{user.mail}</h6>
+            <small className="text-base-content/50">{capitalizeFirstLetter(user.role)}</small>
           </div>
         </li>
         <li>
