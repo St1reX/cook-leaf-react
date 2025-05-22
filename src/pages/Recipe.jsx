@@ -1,12 +1,14 @@
 import RecipeContent from "../components/RecipePage/RecipeContent";
-import RecipeDetailsProvider from "../context/RecipeDetailsContext";
+import { useParams } from "react-router-dom";
+import useRecipeQuery from "../queries/useRecipeQuery";
 
 export default function Recipe() {
+  const { id } = useParams();
+  const { data: recipe, isLoading, isError } = useRecipeQuery(id);
+
   return (
     <>
-      <RecipeDetailsProvider>
-        <RecipeContent></RecipeContent>
-      </RecipeDetailsProvider>
+      <RecipeContent recipe={recipe} isLoading={isLoading} isError={isError} />
     </>
   );
 }

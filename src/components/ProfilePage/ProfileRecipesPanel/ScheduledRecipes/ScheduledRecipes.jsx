@@ -4,15 +4,20 @@ import { useAuth } from "../../../../context/AuthContext";
 import { useState } from "react";
 import FullCalendarRenderFunc from "./FullCalendarRenderFunc";
 import SelectedRecipeModal from "./SelectedRecipeModal";
+import { useRef } from "react";
+import { Link } from "react-router-dom";
+
 export default function ScheduledRecipes() {
+  const modalRef = useRef(null);
   const [selectedRecipe, setSelectedRecipe] = useState(null);
-  const { user } = useAuth();
+  const { user, setUser } = useAuth();
 
   const events = user?.scheduled_recipes.map((recipe) => ({
     title: recipe.recipe.recipe_name,
     start: recipe.date,
     recipe_data: recipe,
     setSelectedRecipe: setSelectedRecipe,
+    modalRef: modalRef,
   }));
 
   return (
@@ -46,7 +51,11 @@ export default function ScheduledRecipes() {
             </>
           )}
 
-          <SelectedRecipeModal selectedRecipe={selectedRecipe}></SelectedRecipeModal>
+          <SelectedRecipeModal
+            modalRef={modalRef}
+            setUser={setUser}
+            selectedRecipe={selectedRecipe}
+          ></SelectedRecipeModal>
         </div>
       </div>
     </>

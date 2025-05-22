@@ -1,13 +1,31 @@
 import moment from "moment";
 import RecipeCard from "../../../Shared/RecipeCard/RecipeCard";
+import useScheduleDeleteMutation from "../../../../mutations/useScheduleDeleteMutation";
 
-export default function SelectedRecipeModal({ selectedRecipe }) {
+export default function SelectedRecipeModal({ selectedRecipe, setUser, modalRef }) {
+  const deleteScheduleMutation = useScheduleDeleteMutation();
   const handleModalClose = () => {
-    const modalEl = document.querySelector("#selected-recipe-modal");
-
-    if (modalEl) {
-      HSOverlay.close(modalEl);
+    if (modalRef) {
+      HSOverlay.close(modalRef.current);
     }
+  };
+
+  const handleScheduleDelete = async () => {
+    await deleteScheduleMutation.mutateAsync({
+      recipeID: selectedRecipe.recipe._id,
+      date: moment(selectedRecipe.date).format("YYYY-MM-DD"),
+    });
+
+    setUser((prev) => ({
+      ...prev,
+      scheduled_recipes: prev.scheduled_recipes.filter(
+        (r) =>
+          r.recipe._id !== selectedRecipe.recipe._id ||
+          moment(selectedRecipe.date).format("YYYY-MM-DD") !== moment(r.date).format("YYYY-MM-DD")
+      ),
+    }));
+
+    handleModalClose();
   };
 
   return (
@@ -17,6 +35,7 @@ export default function SelectedRecipeModal({ selectedRecipe }) {
         className="overlay modal overlay-open:opacity-100 overlay-open:duration-300 hidden"
         role="dialog"
         tabIndex={-1}
+        ref={modalRef}
       >
         <div className="modal-dialog overlay-open:mt-12 overlay-open:opacity-100 overlay-open:duration-300 transition-all ease-out">
           <div className="modal-content">
@@ -45,8 +64,8 @@ export default function SelectedRecipeModal({ selectedRecipe }) {
               <button type="button" className="btn btn-soft btn-secondary" onClick={handleModalClose}>
                 Close
               </button>
-              <button type="button" className="btn btn-primary">
-                Save changes
+              <button onClick={handleScheduleDelete} type="button" className="btn btn-error">
+                Delete Schedule
               </button>
             </div>
           </div>

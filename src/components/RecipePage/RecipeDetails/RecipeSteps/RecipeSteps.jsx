@@ -1,8 +1,4 @@
-import { useRecipeDetails } from "../../../../context/RecipeDetailsContext";
-
-export default function RecipeSteps() {
-  const { recipe } = useRecipeDetails();
-
+export default function RecipeSteps({ recipe }) {
   return (
     <>
       <div className="shadow-xl p-8 rounded-xl">

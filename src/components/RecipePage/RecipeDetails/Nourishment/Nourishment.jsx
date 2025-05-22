@@ -1,4 +1,4 @@
-export default function Nourishment() {
+export default function Nourishment({ recipe }) {
   const nutritionFacts = [
     { name: "Calories", value: "447.2 kcal / 1871 kJ" },
     { name: "Protein", value: "16.4 g" },

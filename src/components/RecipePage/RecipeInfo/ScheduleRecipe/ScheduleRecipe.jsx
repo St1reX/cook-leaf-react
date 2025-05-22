@@ -14,7 +14,7 @@ export default function ScheduleRecipe({ recipeId }) {
     .map((r) => moment(r.date).format("YYYY-MM-DD"));
   const scheduleRecipeMutation = useScheduleRecipeMutation();
   const isDateDisabled = (date) => {
-    return scheduledDates.includes(moment(date).format("YYYY-MM-DD"));
+    return scheduledDates?.includes(moment(date).format("YYYY-MM-DD"));
   };
 
   const handleModalOpen = () => {

@@ -1,10 +1,7 @@
-import { useRecipeDetails } from "../../../../context/RecipeDetailsContext";
-import formatTime from "../../../../utils/formatTime";
+import formatTime from "../../../../utils/formatTIme";
 import { capitalizeFirstLetter } from "../../../../utils/stringUtils";
 
-export default function RecipeMeta() {
-  const { recipe } = useRecipeDetails();
-
+export default function RecipeMeta({ recipe }) {
   return (
     <>
       <div className="flex flex-col font-medium gap-4 mb-8">

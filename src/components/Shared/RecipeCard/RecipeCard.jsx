@@ -28,7 +28,7 @@ export default function RecipeCard({
           alt={`Recipe no. ${recipeNumber}`}
           className="transition-transform rounded-lg object-cover duration-500 group-hover:scale-110 h-full"
         />
-        <HeartBadge recipeID={recipe._id} />
+        <HeartBadge recipe={recipe} />
       </figure>
       <div className="card-body p-1">
         <h5 className="text-lg font-bold mb-2.5">{recipe.recipe_name}</h5>

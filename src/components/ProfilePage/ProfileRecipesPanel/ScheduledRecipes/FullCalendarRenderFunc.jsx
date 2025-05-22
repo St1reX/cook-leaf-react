@@ -1,17 +1,15 @@
 export default function FullCalendarRenderFunc(eventInfo) {
   const {
     event: {
-      extendedProps: { recipe_data, setSelectedRecipe },
+      extendedProps: { recipe_data, setSelectedRecipe, modalRef },
     },
   } = eventInfo;
 
   const handleClick = () => {
     setSelectedRecipe(recipe_data);
 
-    const modalEl = document.querySelector("#selected-recipe-modal");
-
-    if (modalEl) {
-      HSOverlay.open(modalEl);
+    if (modalRef) {
+      HSOverlay.open(modalRef.current);
     }
   };
 

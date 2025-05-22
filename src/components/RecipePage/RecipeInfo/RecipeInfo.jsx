@@ -1,12 +1,9 @@
 import { Link } from "react-router-dom";
 import RecipeRating from "./RecipeRating/RecipeRating";
 import RecipeMeta from "./RecipeMeta/RecipeMeta";
-import { useRecipeDetails } from "../../../context/RecipeDetailsContext";
 import ScheduleRecipe from "./ScheduleRecipe/ScheduleRecipe";
 
-export default function RecipeInfo() {
-  const { recipe } = useRecipeDetails();
-
+export default function RecipeInfo({ recipe }) {
   return (
     <>
       <div className="w-1/2 flex flex-col justify-center">
@@ -23,7 +20,7 @@ export default function RecipeInfo() {
         </div>
         <h2 className="font-semibold text-4xl mb-6">{recipe.recipe_name}</h2>
         <RecipeRating rating={recipe.avg_rating} reviewsAmount={recipe.reviews_count}></RecipeRating>
-        <RecipeMeta></RecipeMeta>
+        <RecipeMeta recipe={recipe}></RecipeMeta>
         <Link to={"/register"} className="btn btn-primary btn-xl w-fit">
           Register for free now
         </Link>

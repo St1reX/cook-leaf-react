@@ -3,11 +3,11 @@ import { notyfInstance } from "../../../constants/notyfConfig";
 import useAddToFavouritesMutation from "../../../mutations/useAddToFavouritesMutation";
 import useDeleteFromFavouritesMutation from "../../../mutations/useDeleteFromFavouritesMutation";
 
-export default function HeartBadge({ recipeID, recipeName }) {
+export default function HeartBadge({ recipe }) {
   const addToFavouritesMutation = useAddToFavouritesMutation();
   const deleteFromFavouritesMutation = useDeleteFromFavouritesMutation();
   const { user, setUser } = useAuth();
-  const isInFavourites = user?.favourite_recipes.some((r) => r._id === recipeID);
+  const isInFavourites = user?.favourite_recipes.some((r) => r._id === recipe._id);
 
   const handleClick = async (e) => {
     e.stopPropagation();
@@ -20,14 +20,14 @@ export default function HeartBadge({ recipeID, recipeName }) {
 
     try {
       if (isInFavourites) {
-        await deleteFromFavouritesMutation.mutateAsync(recipeID);
+        await deleteFromFavouritesMutation.mutateAsync(recipe._id);
         setUser((prev) => ({
           ...prev,
-          favourite_recipes: prev.favourite_recipes.filter((r) => r._id !== recipeID),
+          favourite_recipes: prev.favourite_recipes.filter((r) => r._id !== recipe._id),
         }));
       } else {
-        await addToFavouritesMutation.mutateAsync(recipeID);
-        setUser((prev) => ({ ...prev, favourite_recipes: [...prev.favourite_recipes, { _id: recipeID }] }));
+        await addToFavouritesMutation.mutateAsync(recipe._id);
+        setUser((prev) => ({ ...prev, favourite_recipes: [...prev.favourite_recipes, recipe] }));
       }
     } catch (error) {}
   };

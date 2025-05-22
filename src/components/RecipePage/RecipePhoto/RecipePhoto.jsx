@@ -1,7 +1,6 @@
-import { useRecipeDetails } from "../../../context/RecipeDetailsContext";
 import HeartBadge from "../../Shared/HeartBadge/HeartBadge";
-export default function RecipePhoto() {
-  const { recipe } = useRecipeDetails();
+
+export default function RecipePhoto({ recipe }) {
   return (
     <>
       <div className="w-1/2 h-full rounded-lg relative">
@@ -10,7 +9,7 @@ export default function RecipePhoto() {
           alt={`${recipe.recipe_name} picture`}
           className="h-full w-full object-cover rounded-lg"
         />
-        <HeartBadge recipeID={recipe._id}></HeartBadge>
+        <HeartBadge recipe={recipe} />
       </div>
     </>
   );
