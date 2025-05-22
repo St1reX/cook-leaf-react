@@ -13,12 +13,7 @@ export default function ScheduleRecipe({ recipeId }) {
     .filter((r) => r.recipe._id === recipeId)
     .map((r) => moment(r.date).format("YYYY-MM-DD"));
   const scheduleRecipeMutation = useScheduleRecipeMutation();
-
-  console.log(scheduledDates);
-
   const isDateDisabled = (date) => {
-    console.log(scheduledDates.includes(moment(date).format("YYYY-MM-DD")));
-
     return scheduledDates.includes(moment(date).format("YYYY-MM-DD"));
   };
 

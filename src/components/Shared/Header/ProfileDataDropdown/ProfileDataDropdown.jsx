@@ -5,7 +5,9 @@ export default function ProfileDataDropdown({ email, role, profilePic }) {
   const logoutMutation = useLogoutMutation();
 
   const handleLogout = async () => {
-    await logoutMutation.mutateAsync();
+    try {
+      await logoutMutation.mutateAsync();
+    } catch (error) {}
   };
 
   return (

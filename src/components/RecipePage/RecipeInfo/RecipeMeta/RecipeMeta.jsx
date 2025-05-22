@@ -1,5 +1,6 @@
 import { useRecipeDetails } from "../../../../context/RecipeDetailsContext";
 import formatTime from "../../../../utils/formatTime";
+import { capitalizeFirstLetter } from "../../../../utils/stringUtils";
 
 export default function RecipeMeta() {
   const { recipe } = useRecipeDetails();
@@ -23,10 +24,7 @@ export default function RecipeMeta() {
           />
 
           <span>
-            Difficulty level:{" "}
-            <strong>
-              {recipe.difficulty_level.charAt(0).toUpperCase() + recipe.difficulty_level.slice(1)}
-            </strong>
+            Difficulty level: <strong>{capitalizeFirstLetter(recipe.difficulty_level)}</strong>
           </span>
         </div>
         <div className="flex items-center">

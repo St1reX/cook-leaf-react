@@ -25,12 +25,15 @@ export default function LoginForm() {
             password: Yup.string().required("Password is required"),
           })}
           onSubmit={async (values, { setSubmitting, resetForm }) => {
-            const userData = await loginMutation.mutateAsync(values);
-            setUser(userData);
-
-            resetForm();
-            setSubmitting(false);
-            routerNavigate("/");
+            try {
+              const { user } = await loginMutation.mutateAsync(values);
+              setUser(user);
+              routerNavigate("/");
+            } catch (error) {
+            } finally {
+              resetForm();
+              setSubmitting(false);
+            }
           }}
         >
           {({ errors, validateForm }) => (

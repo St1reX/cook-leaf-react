@@ -12,11 +12,18 @@ export default function AuthProvider({ children }) {
   const routerNavigate = useNavigate();
 
   useEffect(() => {
-    axiosInstance
-      .get("/auth/me", { withCredentials: true })
-      .then((res) => setUser(res.data))
-      .catch(() => logout())
-      .finally(() => setIsLoading(false));
+    const checkAuth = async () => {
+      try {
+        const res = await axiosInstance.get("/auth/me");
+        setUser(res.data);
+      } catch (error) {
+        logout();
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    checkAuth();
   }, []);
 
   const logout = () => {
@@ -28,7 +35,7 @@ export default function AuthProvider({ children }) {
   return (
     <AuthContext.Provider value={{ isAuthenticated, setIsAuthenticated, user, setUser, logout }}>
       {isLoading ? (
-        <div className="w-full h-full flex justify-center items-center">
+        <div className="w-screen h-screen flex justify-center items-center">
           <span className="loading loading-infinity"></span>{" "}
         </div>
       ) : (

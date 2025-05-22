@@ -18,16 +18,18 @@ export default function HeartBadge({ recipeID, recipeName }) {
       return;
     }
 
-    if (isInFavourites) {
-      await deleteFromFavouritesMutation.mutateAsync(recipeID);
-      setUser((prev) => ({
-        ...prev,
-        favourite_recipes: prev.favourite_recipes.filter((r) => r._id !== recipeID),
-      }));
-    } else {
-      await addToFavouritesMutation.mutateAsync(recipeID);
-      setUser((prev) => ({ ...prev, favourite_recipes: [...prev.favourite_recipes, { _id: recipeID }] }));
-    }
+    try {
+      if (isInFavourites) {
+        await deleteFromFavouritesMutation.mutateAsync(recipeID);
+        setUser((prev) => ({
+          ...prev,
+          favourite_recipes: prev.favourite_recipes.filter((r) => r._id !== recipeID),
+        }));
+      } else {
+        await addToFavouritesMutation.mutateAsync(recipeID);
+        setUser((prev) => ({ ...prev, favourite_recipes: [...prev.favourite_recipes, { _id: recipeID }] }));
+      }
+    } catch (error) {}
   };
 
   return (

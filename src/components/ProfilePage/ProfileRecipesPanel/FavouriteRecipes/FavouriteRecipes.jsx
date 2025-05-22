@@ -1,12 +1,11 @@
 import { useAuth } from "../../../../context/AuthContext";
 import RecipeCard from "../../../Shared/RecipeCard/RecipeCard";
+import { Link } from "react-router-dom";
 
 export default function FavouriteRecipes() {
   const {
     user: { favourite_recipes: favouriteRecipes },
   } = useAuth();
-
-  //console.log(favouriteRecipes);
 
   const favourite_recipes_to_display = favouriteRecipes.slice(0, 3);
   const favourite_recipes_hidden = favouriteRecipes.slice(4, favouriteRecipes.length);
@@ -51,17 +50,28 @@ export default function FavouriteRecipes() {
           </div>
 
           <div className="card-actions justify-center">
-            <button
-              type="button"
-              className="collapse-toggle btn btn-primary"
-              id="basic-collapse"
-              aria-expanded="false"
-              aria-controls="favourite-collapse-heading"
-              data-collapse="#favourite-collapse-heading"
-            >
-              Collapse
-              <span className="icon-[tabler--chevron-down] collapse-open:rotate-180 size-4"></span>
-            </button>
+            {favourite_recipes_hidden.length > 0 ? (
+              <button
+                type="button"
+                className="collapse-toggle btn btn-primary"
+                id="basic-collapse"
+                aria-expanded="false"
+                aria-controls="favourite-collapse-heading"
+                data-collapse="#favourite-collapse-heading"
+              >
+                Collapse
+                <span className="icon-[tabler--chevron-down] collapse-open:rotate-180 size-4"></span>
+              </button>
+            ) : (
+              <>
+                <div className="flex flex-col items-center justify-center gap-4">
+                  <p className="text-center text-base-content/50 text-2xl">You have no favorite recipes</p>
+                  <Link to="/" className="btn btn-primary">
+                    Browse recipes
+                  </Link>
+                </div>
+              </>
+            )}
           </div>
         </div>
       </div>

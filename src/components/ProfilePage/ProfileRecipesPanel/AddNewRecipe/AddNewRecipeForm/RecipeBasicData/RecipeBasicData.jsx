@@ -1,5 +1,6 @@
 import { RECIPE_DIFFICULTIES } from "../../../../../../constants/recipeDifficulties";
 import { PORTIONS_AMOUNT } from "../../../../../../constants/portionsAmount";
+import { capitalizeFirstLetter } from "../../../../../../utils/stringUtils";
 
 export default function RecipeBasicData() {
   return (
@@ -26,7 +27,7 @@ export default function RecipeBasicData() {
             <select className="select" id="recipeDifficultyLevel">
               {RECIPE_DIFFICULTIES.map((level) => (
                 <option key={level} value={level}>
-                  {level.charAt(0).toUpperCase() + level.slice(1)}
+                  {capitalizeFirstLetter(level)}
                 </option>
               ))}
             </select>

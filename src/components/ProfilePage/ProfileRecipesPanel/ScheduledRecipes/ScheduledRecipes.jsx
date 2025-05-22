@@ -1,7 +1,19 @@
 import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
+import { useAuth } from "../../../../context/AuthContext";
+import { useState } from "react";
+import FullCalendarRenderFunc from "./FullCalendarRenderFunc";
+import SelectedRecipeModal from "./SelectedRecipeModal";
 export default function ScheduledRecipes() {
-  const events = [{ title: "Meeting", start: "2025-05-21" }];
+  const [selectedRecipe, setSelectedRecipe] = useState(null);
+  const { user } = useAuth();
+
+  const events = user?.scheduled_recipes.map((recipe) => ({
+    title: recipe.recipe.recipe_name,
+    start: recipe.date,
+    recipe_data: recipe,
+    setSelectedRecipe: setSelectedRecipe,
+  }));
 
   return (
     <>
@@ -15,12 +27,26 @@ export default function ScheduledRecipes() {
             </p>
           </div>
 
-          <FullCalendar
-            plugins={[dayGridPlugin]}
-            initialView="dayGridMonth"
-            weekends={true}
-            events={events}
-          />
+          {events.length > 0 ? (
+            <FullCalendar
+              plugins={[dayGridPlugin]}
+              initialView="dayGridMonth"
+              weekends={true}
+              events={events}
+              eventContent={FullCalendarRenderFunc}
+            />
+          ) : (
+            <>
+              <div className="flex flex-col items-center justify-center gap-4">
+                <p className="text-center text-base-content/50 text-2xl">You have no scheduled recipes</p>
+                <Link to="/" className="btn btn-primary">
+                  Browse recipes
+                </Link>
+              </div>
+            </>
+          )}
+
+          <SelectedRecipeModal selectedRecipe={selectedRecipe}></SelectedRecipeModal>
         </div>
       </div>
     </>

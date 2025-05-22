@@ -32,9 +32,13 @@ export default function RegisterForm() {
               ),
           })}
           onSubmit={async (values, { setSubmitting, resetForm }) => {
-            await registerMutation.mutateAsync(values);
-            resetForm();
-            setSubmitting(false);
+            try {
+              await registerMutation.mutateAsync(values);
+            } catch (error) {
+            } finally {
+              resetForm();
+              setSubmitting(false);
+            }
           }}
         >
           {({ errors, validateForm }) => (
