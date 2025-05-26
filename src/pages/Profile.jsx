@@ -9,13 +9,15 @@ export default function Profile() {
   const { user, setUser } = useAuth();
   const { data: userData, isLoading } = useProfileDetailsQuery(user?._id);
 
-  if (!isLoading) {
-    setUser(userData);
-  }
+  useEffect(() => {
+    if (!isLoading) {
+      setUser(userData);
+    }
+  }, [userData]);
 
   return (
     <>
-      <div className="w-full flex gap-8 justify-between">
+      <div className="w-full flex gap-8 justify-between mb-8">
         <ProfileInfo></ProfileInfo>
         <ProfileRecipesPanel></ProfileRecipesPanel>
       </div>

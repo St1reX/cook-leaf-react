@@ -1,8 +1,8 @@
 import moment from "moment";
-import RecipeCard from "../../../Shared/RecipeCard/RecipeCard";
-import useScheduleDeleteMutation from "../../../../mutations/useScheduleDeleteMutation";
+import RecipeCard from "../../../../Shared/RecipeCard/RecipeCard";
+import useScheduleDeleteMutation from "../../../../../mutations/useScheduleDeleteMutation";
 
-export default function SelectedRecipeModal({ selectedRecipe, setUser, modalRef }) {
+export default function SelectedRecipeModal({ selectedRecipe, setUser, modalRef, user }) {
   const deleteScheduleMutation = useScheduleDeleteMutation();
   const handleModalClose = () => {
     if (modalRef) {
@@ -20,8 +20,10 @@ export default function SelectedRecipeModal({ selectedRecipe, setUser, modalRef 
       ...prev,
       scheduled_recipes: prev.scheduled_recipes.filter(
         (r) =>
-          r.recipe._id !== selectedRecipe.recipe._id ||
-          moment(selectedRecipe.date).format("YYYY-MM-DD") !== moment(r.date).format("YYYY-MM-DD")
+          !(
+            r.recipe._id === selectedRecipe.recipe._id &&
+            moment(r.date).isSame(moment(selectedRecipe.date), "day")
+          )
       ),
     }));
 

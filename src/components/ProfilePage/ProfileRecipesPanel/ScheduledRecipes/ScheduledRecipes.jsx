@@ -2,8 +2,8 @@ import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import { useAuth } from "../../../../context/AuthContext";
 import { useState } from "react";
-import FullCalendarRenderFunc from "./FullCalendarRenderFunc";
-import SelectedRecipeModal from "./SelectedRecipeModal";
+import FullCalendarRenderFunc from "./components/FullCalendarRenderFunc";
+import SelectedRecipeModal from "./components/SelectedRecipeModal";
 import { useRef } from "react";
 import { Link } from "react-router-dom";
 
@@ -53,6 +53,7 @@ export default function ScheduledRecipes() {
 
           <SelectedRecipeModal
             modalRef={modalRef}
+            user={user}
             setUser={setUser}
             selectedRecipe={selectedRecipe}
           ></SelectedRecipeModal>

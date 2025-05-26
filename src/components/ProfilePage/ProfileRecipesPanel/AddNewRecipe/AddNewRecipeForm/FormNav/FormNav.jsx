@@ -30,7 +30,7 @@ export default function FormNav() {
               <span className="icon-[tabler--check] stepper-success:block hidden size-4 shrink-0" />
               <span className="icon-[tabler--x] stepper-error:block hidden size-4 shrink-0" />
             </span>
-            <span className="text-base-content text-nowrap font-medium">Personal Info</span>
+            <span className="text-base-content text-nowrap font-medium">Photo & Ingredients</span>
           </span>
           <div className="stepper-success:bg-primary stepper-completed:bg-success bg-base-content/20 h-px w-full group-last:hidden max-md:mt-2 max-md:h-8 max-md:w-px md:flex-1" />
         </li>
@@ -46,11 +46,10 @@ export default function FormNav() {
               <span className="icon-[tabler--check] stepper-success:block hidden size-4 shrink-0" />
               <span className="icon-[tabler--x] stepper-error:block hidden size-4 shrink-0" />
             </span>
-            <span className="text-base-content text-nowrap font-medium">Social Links</span>
+            <span className="text-base-content text-nowrap font-medium">Steps & Categories</span>
           </span>
           <div className="stepper-success:bg-primary stepper-completed:bg-success bg-base-content/20 h-px w-full group-last:hidden max-md:mt-2 max-md:h-8 max-md:w-px md:flex-1" />
         </li>
-        {/* End Item */}
       </ul>
     </>
   );

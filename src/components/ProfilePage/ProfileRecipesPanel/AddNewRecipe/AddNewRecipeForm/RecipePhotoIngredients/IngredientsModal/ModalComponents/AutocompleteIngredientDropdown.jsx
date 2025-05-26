@@ -1,24 +1,27 @@
-import React, { useState } from "react";
-import useRecipesAutoCompleteQuery from "../../../../queries/useRecipesAutoCompleteQuery";
-import { Link } from "react-router-dom";
+import { useState } from "react";
+import useIngredientsQuery from "../../../../../../../../queries/useIngredientsQuery";
 
-const DropdownInput = ({ className }) => {
+export default function AutocompleteIngredientDropdown({ onSelectIngredient, activeIngredients }) {
   const [isFocused, setIsFocused] = useState(false);
   const [inputValue, setInputValue] = useState("");
   const shouldShowDropdown = inputValue.trim().length > 0 && isFocused;
 
-  const { data: recipes, isLoading, isError } = useRecipesAutoCompleteQuery(inputValue);
+  const { data: ingredients, isLoading, isError } = useIngredientsQuery(inputValue);
+
+  const unActiveIngredients = ingredients?.filter(
+    (ingredient) => !activeIngredients.some((activeIngredient) => ingredient._id === activeIngredient._id)
+  );
 
   return (
-    <div className="relative inline-block w-3/4">
+    <div className="relative w-full mt-2">
       <input
         type="text"
-        placeholder="Search for recipes"
+        placeholder="Search for ingredients"
         value={inputValue}
         onChange={(e) => setInputValue(e.target.value)}
         onFocus={() => setIsFocused(true)}
         onBlur={() => setTimeout(() => setIsFocused(false), 500)}
-        className={`input input-xl pl-10 ${className}`}
+        className="input input-xl pl-10 w-full"
       />
 
       <span
@@ -27,7 +30,7 @@ const DropdownInput = ({ className }) => {
       />
 
       {shouldShowDropdown && (
-        <ul className="absolute z-10 w-full menu bg-white border border-gray-200 shadow-lg max-h-80 overflow-auto">
+        <ul className="absolute w-full menu bg-white border border-gray-200 shadow-lg max-h-80 overflow-auto">
           {isLoading && (
             <li className="w-full flex justify-center p-2">
               <span className="loading loading-dots"></span>
@@ -38,40 +41,33 @@ const DropdownInput = ({ className }) => {
             <li className="text-error p-2">Server error occurred! Try again later...</li>
           )}
 
-          {!isLoading && !isError && recipes?.length === 0 && <li className="p-2">No results found.</li>}
+          {!isLoading && !isError && unActiveIngredients?.length === 0 && (
+            <li className="p-2">No results found.</li>
+          )}
 
           {!isLoading &&
             !isError &&
-            recipes?.length > 0 &&
-            recipes.map((value, index) => (
+            unActiveIngredients?.length > 0 &&
+            unActiveIngredients.map((value, index) => (
               <li key={index}>
-                <Link
-                  to={`/recipe/${value._id}`}
+                <button
+                  onClick={() => onSelectIngredient(value)}
                   className="w-full flex justify-between items-center gap-2 p-2 cursor-pointer hover:bg-gray-100"
+                  type="button"
                 >
                   <div className="flex items-center gap-4">
                     <img
                       src={value.photo_path}
-                      alt={`${value.recipe_name} icon`}
+                      alt={`${value.ingredient_name} icon`}
                       className="w-10 h-10 object-cover rounded-full"
                     />
-                    <span>{value.recipe_name}</span>
+                    <span>{value.ingredient_name}</span>
                   </div>
-
-                  <div className="flex items-center gap-2">
-                    <span>{value.avg_rating}</span>
-                    <span
-                      className="icon-[mingcute--star-fill]"
-                      style={{ width: 24, height: 24, color: "#040404" }}
-                    />
-                  </div>
-                </Link>
+                </button>
               </li>
             ))}
         </ul>
       )}
     </div>
   );
-};
-
-export default DropdownInput;
+}
