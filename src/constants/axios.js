@@ -23,22 +23,16 @@ export function setupInterceptors(auth, navigate) {
       return response;
     },
     (error) => {
-      const message = error.response?.data?.message || "Wystąpił błąd";
-      notyfInstance.error(message);
-
-      const originalRequest = error.config;
-
-      if (originalRequest.url.includes("/auth/me")) {
+      if (error.response?.status === 404) {
+        navigate("*");
+        return Promise.reject(error);
+      } else if (error.response?.status === 401) {
+        auth.logout();
         return Promise.reject(error);
       }
 
-      if (error.response?.status === 401) {
-        auth.logout();
-      } else if (error.response?.status === 404) {
-        navigate("*");
-      }
-
-      return Promise.reject(error);
+      const message = error.response?.data?.message || "Wystąpił błąd";
+      notyfInstance.error(message);
     }
   );
 }

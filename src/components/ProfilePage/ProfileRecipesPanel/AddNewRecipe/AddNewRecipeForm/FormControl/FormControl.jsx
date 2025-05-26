@@ -3,7 +3,7 @@ import { useState } from "react";
 import { notyfInstance } from "../../../../../../constants/notyfConfig";
 
 export default function FormControl() {
-  const { validateForm } = useFormikContext();
+  const { validateForm, submitForm } = useFormikContext();
   const [step, setStep] = useState(1);
 
   const handleFinishClick = async () => {
@@ -12,6 +12,8 @@ export default function FormControl() {
       notyfInstance.error("There are errors in the form. Correct form fields before submitting");
       return;
     }
+
+    await submitForm();
   };
 
   return (

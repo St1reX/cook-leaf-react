@@ -5,7 +5,7 @@ import RecipeStepsCategories from "./RecipeStepsCategories/RecipeStepsCategories
 import FormControl from "./FormControl/FormControl";
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
-import { notyfInstance } from "../../../../../constants/notyfConfig";
+import useAddRecipeMutation from "../../../../../mutations/useAddRecipeMutation";
 
 const validationSchema = Yup.object().shape({
   name: Yup.string()
@@ -17,7 +17,6 @@ const validationSchema = Yup.object().shape({
   ingredients: Yup.array().min(1, "At least one ingredient is required"),
   steps: Yup.array().min(1, "At least one step is required"),
   photo: Yup.mixed().nullable(),
-  categories: Yup.array().min(1, "At least one category is required"),
 });
 
 const initialValues = {
@@ -31,8 +30,14 @@ const initialValues = {
 };
 
 export default function AddNewRecipeForm() {
+  const addRecipeMutation = useAddRecipeMutation();
+
   const handleSubmit = async (values, { setSubmitting, resetForm }) => {
     try {
+      console.log(values);
+      console.log("działaaa");
+
+      await addRecipeMutation.mutateAsync(values);
     } catch (error) {
     } finally {
       setSubmitting(false);

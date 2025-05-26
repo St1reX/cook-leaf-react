@@ -89,7 +89,9 @@ export default function StepsModal({ steps, setSteps }) {
             </div>
           </div>
           <div className="modal-footer">
-            <button className="btn btn-soft btn-secondary">Close</button>
+            <button type="button" className="btn btn-soft btn-secondary" data-overlay="#steps-modal">
+              Close
+            </button>
           </div>
         </div>
       </div>

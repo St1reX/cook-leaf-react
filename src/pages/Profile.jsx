@@ -17,10 +17,12 @@ export default function Profile() {
 
   return (
     <>
-      <div className="w-full flex gap-8 justify-between mb-8">
-        <ProfileInfo></ProfileInfo>
-        <ProfileRecipesPanel></ProfileRecipesPanel>
-      </div>
+      {!isLoading && (
+        <div className="w-full flex gap-8 justify-between mb-8">
+          <ProfileInfo></ProfileInfo>
+          <ProfileRecipesPanel></ProfileRecipesPanel>
+        </div>
+      )}
     </>
   );
 }

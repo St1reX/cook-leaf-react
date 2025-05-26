@@ -1,6 +1,7 @@
 import { createContext, useContext, useState, useEffect } from "react";
 import { axiosInstance } from "../constants/axios";
 import { useNavigate } from "react-router-dom";
+import { setupInterceptors } from "../constants/axios";
 
 const AuthContext = createContext();
 
@@ -8,8 +9,17 @@ export default function AuthProvider({ children }) {
   const [isLoading, setIsLoading] = useState(true);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [user, setUser] = useState(null);
-
   const routerNavigate = useNavigate();
+
+  const logout = () => {
+    routerNavigate("/");
+    setIsAuthenticated(false);
+    setUser(null);
+  };
+
+  useEffect(() => {
+    setupInterceptors({ logout }, routerNavigate);
+  }, [logout, routerNavigate]);
 
   useEffect(() => {
     const checkAuth = async () => {
@@ -25,12 +35,6 @@ export default function AuthProvider({ children }) {
 
     checkAuth();
   }, []);
-
-  const logout = () => {
-    setIsAuthenticated(false);
-    setUser(null);
-    routerNavigate("/");
-  };
 
   return (
     <AuthContext.Provider value={{ isAuthenticated, setIsAuthenticated, user, setUser, logout }}>

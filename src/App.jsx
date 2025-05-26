@@ -4,7 +4,6 @@ import { Route, Routes, useNavigate } from "react-router-dom";
 import useFlyonUIInit from "./hooks/useFlyonUIInit";
 import { useEffect } from "react";
 import { useAuth } from "./context/AuthContext";
-import { setupInterceptors } from "./constants/axios";
 
 import Layout from "./components/Layout";
 
@@ -18,13 +17,6 @@ import Profile from "./pages/Profile";
 
 function App() {
   useFlyonUIInit();
-
-  const auth = useAuth();
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    setupInterceptors(auth, navigate);
-  }, []);
 
   const siteContent = (
     <>

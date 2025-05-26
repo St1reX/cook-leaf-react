@@ -12,6 +12,8 @@ export default function ScheduledRecipes() {
   const [selectedRecipe, setSelectedRecipe] = useState(null);
   const { user, setUser } = useAuth();
 
+  console.log(user.scheduled_recipes);
+
   const events = user?.scheduled_recipes.map((recipe) => ({
     title: recipe.recipe.recipe_name,
     start: recipe.date,
