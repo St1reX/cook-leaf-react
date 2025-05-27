@@ -34,9 +34,6 @@ export default function AddNewRecipeForm() {
 
   const handleSubmit = async (values, { setSubmitting, resetForm }) => {
     try {
-      console.log(values);
-      console.log("działaaa");
-
       await addRecipeMutation.mutateAsync(values);
     } catch (error) {
     } finally {

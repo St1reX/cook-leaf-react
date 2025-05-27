@@ -23,14 +23,16 @@ export default function FavouriteRecipes() {
             </p>
           </div>
 
-          {favourite_recipes_to_display.map((value, index) => (
-            <RecipeCard
-              key={value.recipe_name}
-              recipe={value}
-              recipeNumber={index}
-              showReviewsCount={false}
-            ></RecipeCard>
-          ))}
+          <div className="flex justify-start gap-4 items-center flex-wrap w-full">
+            {favourite_recipes_to_display.map((value, index) => (
+              <RecipeCard
+                key={value.recipe_name}
+                recipe={value}
+                recipeNumber={index}
+                showReviewsCount={false}
+              ></RecipeCard>
+            ))}
+          </div>
 
           <div
             id="favourite-collapse-heading"
@@ -50,7 +52,7 @@ export default function FavouriteRecipes() {
           </div>
 
           <div className="card-actions justify-center">
-            {favourite_recipes_hidden.length > 0 ? (
+            {favourite_recipes_to_display.length > 0 ? (
               <button
                 type="button"
                 className="collapse-toggle btn btn-primary"
