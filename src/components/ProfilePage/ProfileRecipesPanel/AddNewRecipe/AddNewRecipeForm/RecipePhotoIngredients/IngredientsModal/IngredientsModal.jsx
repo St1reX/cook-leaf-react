@@ -1,17 +1,12 @@
 import { useState } from "react";
 import AutocompleteIngredientDropdown from "./ModalComponents/AutocompleteIngredientDropdown";
-import IngredientQuantityInput from "./ModalComponents/IngredientQuantityInput";
+import NumberInput from "../../shared/NumberInput";
 import UnitSelect from "./ModalComponents/UnitSelect";
 
 export default function IngredientsModal({ ingredients, setIngredients }) {
   const [selectedIngredient, setSelectedIngredient] = useState(null);
   const [quantity, setQuantity] = useState(1);
   const [unit, setUnit] = useState(null);
-
-  const handleQuantityChange = (value) => {
-    if (!/^\d+$/.test(value) || Number(value) <= 0) return;
-    setQuantity(Number(value));
-  };
 
   const handleAdditionCancelation = () => {
     setSelectedIngredient(null);
@@ -82,7 +77,7 @@ export default function IngredientsModal({ ingredients, setIngredients }) {
             {selectedIngredient && (
               <div className="flex flex-col items-center gap-4 w-full">
                 <div className="flex gap-4 items-center">
-                  <IngredientQuantityInput quantity={quantity} onQuantityChange={handleQuantityChange} />
+                  <NumberInput quantity={quantity} onQuantityChange={setQuantity} label={"Quantity"} />
                   <UnitSelect unit={unit} onUnitChange={setUnit} />
                 </div>
                 <div className="flex gap-2">

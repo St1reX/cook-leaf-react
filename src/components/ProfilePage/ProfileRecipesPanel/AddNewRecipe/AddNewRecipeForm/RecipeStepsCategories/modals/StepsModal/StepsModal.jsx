@@ -1,5 +1,6 @@
 import StepsTimeInput from "./StepsTimeInput";
 import { notyfInstance } from "../../../../../../../../constants/notyfConfig";
+import NumberInput from "../../../shared/NumberInput";
 
 export default function StepsModal({ steps, setSteps }) {
   const handleStepDescChange = (value, index) => {
@@ -8,11 +9,13 @@ export default function StepsModal({ steps, setSteps }) {
   };
 
   const handleStepTimeChange = (value, index) => {
-    if (!/^\d+$/.test(value) || Number(value) <= 0) return;
+    console.log("wywołało się");
 
-    const newSteps = steps.map((step, i) =>
-      i === index ? { ...step, estimated_time: Number(value) } : step
-    );
+    console.log(value, index);
+
+    const newSteps = steps.map((step, i) => (i === index ? { ...step, estimated_time: value } : step));
+    console.log(newSteps);
+
     setSteps(newSteps);
   };
 
@@ -68,11 +71,13 @@ export default function StepsModal({ steps, setSteps }) {
                       placeholder="Enter instructions here..."
                     />
                   </div>
-                  <StepsTimeInput
-                    stepTime={step.estimated_time}
-                    onStepTimeChange={handleStepTimeChange}
-                    inputIndex={index}
-                  />
+
+                  <NumberInput
+                    quantity={step.estimated_time}
+                    onQuantityChange={handleStepTimeChange}
+                    label={"Estimated time"}
+                    elementIndex={index}
+                  ></NumberInput>
 
                   {index === steps.length - 1 && (
                     <span
