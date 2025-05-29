@@ -1,10 +1,10 @@
-import DropdownInput from "./DropdownInput/DropdownInput";
+import SearchRecipeDropdown from "./SearchRecipeDropdown/SearchRecipeDropdown";
 
 export default function SearchBar() {
   return (
     <>
       <div className="w-full flex items-center justify-center">
-        <DropdownInput className={"w-full"}></DropdownInput>
+        <SearchRecipeDropdown className={"w-full"}></SearchRecipeDropdown>
       </div>
     </>
   );

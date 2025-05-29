@@ -20,7 +20,7 @@ export default function AutocompleteIngredientDropdown({ onSelectIngredient, act
         value={inputValue}
         onChange={(e) => setInputValue(e.target.value)}
         onFocus={() => setIsFocused(true)}
-        onBlur={() => setTimeout(() => setIsFocused(false), 500)}
+        onBlur={() => setTimeout(() => setIsFocused(true), 500)}
         className="input input-xl pl-10 w-full"
       />
 
@@ -30,7 +30,7 @@ export default function AutocompleteIngredientDropdown({ onSelectIngredient, act
       />
 
       {shouldShowDropdown && (
-        <ul className="absolute w-full menu bg-white border border-gray-200 shadow-lg max-h-80 overflow-auto">
+        <ul className="absolute w-full menu z-20 bg-white border border-gray-200 shadow-lg max-h-80 overflow-auto">
           {isLoading && (
             <li className="w-full flex justify-center p-2">
               <span className="loading loading-dots"></span>

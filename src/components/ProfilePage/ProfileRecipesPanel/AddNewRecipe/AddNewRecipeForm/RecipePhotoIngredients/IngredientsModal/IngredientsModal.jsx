@@ -60,7 +60,7 @@ export default function IngredientsModal({ ingredients, setIngredients }) {
             </button>
           </div>
 
-          <div className="modal-body space-y-4 flex flex-col">
+          <div className="modal-body space-y-4 flex flex-col overflow-visible">
             {selectedIngredient == null && (
               <AutocompleteIngredientDropdown
                 onSelectIngredient={setSelectedIngredient}
@@ -68,7 +68,7 @@ export default function IngredientsModal({ ingredients, setIngredients }) {
               />
             )}
 
-            {selectedIngredient != null && (
+            {selectedIngredient && (
               <div className="flex gap-2 items-center font-semibold rounded-lg p-2 shadow-md">
                 <img
                   src={selectedIngredient.photo_path}

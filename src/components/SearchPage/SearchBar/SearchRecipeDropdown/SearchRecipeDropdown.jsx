@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import useRecipesAutoCompleteQuery from "../../../../queries/useRecipesAutoCompleteQuery";
 import { Link } from "react-router-dom";
 
-const DropdownInput = ({ className }) => {
+const SearchRecipeDropdown = ({ className }) => {
   const [isFocused, setIsFocused] = useState(false);
   const [inputValue, setInputValue] = useState("");
   const shouldShowDropdown = inputValue.trim().length > 0 && isFocused;
@@ -27,7 +27,7 @@ const DropdownInput = ({ className }) => {
       />
 
       {shouldShowDropdown && (
-        <ul className="absolute z-10 w-full menu bg-white border border-gray-200 shadow-lg max-h-80 overflow-auto">
+        <ul className="absolute z-20 w-full menu bg-white border border-gray-200 shadow-lg max-h-80 overflow-auto">
           {isLoading && (
             <li className="w-full flex justify-center p-2">
               <span className="loading loading-dots"></span>
@@ -74,4 +74,4 @@ const DropdownInput = ({ className }) => {
   );
 };
 
-export default DropdownInput;
+export default SearchRecipeDropdown;

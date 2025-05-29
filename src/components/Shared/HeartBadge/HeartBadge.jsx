@@ -36,7 +36,7 @@ export default function HeartBadge({ recipe }) {
     <>
       <span
         onClick={handleClick}
-        className="badge badge-primary bg-transparent border-none size-6 rounded-full p-0 absolute top-2 right-2 z-20 cursor-pointer"
+        className="badge badge-primary bg-transparent border-none size-6 rounded-full p-0 absolute top-2 right-2 z-10 cursor-pointer"
       >
         {isInFavourites ? (
           <span className="icon-[mingcute--heart-fill]" style={{ width: 96, height: 96, color: "#f01154" }} />
