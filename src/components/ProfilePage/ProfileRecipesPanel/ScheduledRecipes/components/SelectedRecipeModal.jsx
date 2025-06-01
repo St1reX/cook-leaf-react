@@ -58,7 +58,7 @@ export default function SelectedRecipeModal({ selectedRecipe, setUser, modalRef,
               </div>
               <div onClick={handleModalClose}>
                 {selectedRecipe !== null && (
-                  <RecipeCard recipe={selectedRecipe.recipe} redirectionDelay={250}></RecipeCard>
+                  <RecipeCard recipe={selectedRecipe.recipe} redirectionDelay={300}></RecipeCard>
                 )}
               </div>
             </div>
