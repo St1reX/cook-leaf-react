@@ -1,6 +1,5 @@
 import RecipeDetails from "./RecipeDetails/RecipeDetails";
 import RecipeInfo from "./RecipeInfo/RecipeInfo";
-import RecipeMeta from "./RecipeInfo/RecipeMeta/RecipeMeta";
 import RecipePhoto from "./RecipePhoto/RecipePhoto";
 import RecipeSkeleton from "./RecipesSkeleton";
 

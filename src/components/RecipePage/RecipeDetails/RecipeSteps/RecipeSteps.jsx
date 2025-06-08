@@ -1,10 +1,10 @@
-export default function RecipeSteps({ recipe }) {
+export default function RecipeSteps({ steps }) {
   return (
     <>
       <div className="shadow-xl p-8 rounded-xl">
         <h4 className="text-xl mb-6">Preparation</h4>
         <ul className="space-y-5 text-sm font-nedium">
-          {recipe.steps.map(({ description }, index) => (
+          {steps.map(({ description }, index) => (
             <li className="space-y-5" key={index}>
               <div className="flex items-center space-x-3">
                 <span className="border-primary text-primary flex items-center justify-center rounded-full border p-0.5">
@@ -13,7 +13,7 @@ export default function RecipeSteps({ recipe }) {
                 <span className="text-base-content/80 text-base">{description}</span>
               </div>
 
-              {index == recipe.steps.length - 1 ? "" : <div className="divider"></div>}
+              {index == steps.length - 1 ? "" : <div className="divider"></div>}
             </li>
           ))}
         </ul>

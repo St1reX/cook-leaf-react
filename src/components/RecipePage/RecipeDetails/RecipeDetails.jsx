@@ -6,10 +6,10 @@ export default function RecipeDetails({ recipe }) {
   return (
     <>
       <div className="flex w-full mb-10 gap-6">
-        <Ingredients recipe={recipe}></Ingredients>
+        <Ingredients ingredients={recipe.ingredients}></Ingredients>
         <div className="flex w-3/5 flex-col gap-6">
-          <RecipeSteps recipe={recipe}></RecipeSteps>
-          <Nourishment recipe={recipe}></Nourishment>
+          <RecipeSteps steps={recipe.steps}></RecipeSteps>
+          <Nourishment ingredients={recipe.ingredients}></Nourishment>
         </div>
       </div>
     </>

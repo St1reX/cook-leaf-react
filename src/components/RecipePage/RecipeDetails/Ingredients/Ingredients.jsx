@@ -1,9 +1,9 @@
-export default function Ingredients({ recipe }) {
+export default function Ingredients({ ingredients }) {
   return (
     <>
       <div className="flex flex-col gap-4 p-8 shadow-xl w-2/5 rounded-lg">
         <h4 className="text-xl mb-6">Ingredients</h4>
-        {recipe.ingredients.map(({ ingredient, amount, unit }, index) => (
+        {ingredients.map(({ ingredient, amount, unit }, index) => (
           <div key={ingredient.ingredient_name} className="flex justify-between items-center gap-5 mb-4">
             <div>
               <img
