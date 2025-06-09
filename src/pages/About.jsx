@@ -10,7 +10,7 @@ export default function About() {
 
   return (
     <>
-      <div className="">
+      <div>
         <img src={coupleImage} alt="Happy couple" className="w-full object-cover mb-10 rounded-lg" />
 
         <div id="advantagesList" className="mb-10">

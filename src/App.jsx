@@ -14,6 +14,7 @@ import Register from "./pages/Register";
 import Login from "./pages/Login";
 import Recipe from "./pages/Recipe";
 import Profile from "./pages/Profile";
+import Help from "./pages/Help";
 
 function App() {
   useFlyonUIInit();
@@ -28,6 +29,7 @@ function App() {
         <Route path="/register" element={<Register />}></Route>
         <Route path="/login" element={<Login />}></Route>
         <Route path="/about" element={<About />}></Route>
+        <Route path="/help" element={<Help />}></Route>
       </Routes>
     </>
   );
