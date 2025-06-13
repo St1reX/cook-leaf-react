@@ -1,8 +1,11 @@
+import useFlyonUIInit from "../hooks/useFlyonUIInit";
 import { Link } from "react-router-dom";
 import helpSupportCenter from "../assets/helpPage/Help_SupportCentre.avif";
 import helpTutorials from "../assets/helpPage/Help_Tutorials.avif";
 
 export default function Help() {
+  useFlyonUIInit();
+
   return (
     <>
       <div className="flex flex-col gap-16">

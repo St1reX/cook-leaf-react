@@ -1,11 +1,6 @@
 TODO huj wie czemu:
--- zbugowany input od estimatedTime w stepsach chociaż jest taki sam jak w składnikach XDD
--- z-index w modalach do wyjebania
 -- modal do kroków musi być kurwa scrollowalny
--- strone help zrobić XD
 -- opinie dodać
--- przeliczane wartości odżywczych
--- responsywność
 -- dodawanie kategorii przy kreatorze
 -- endpoint do sortowania może łaskawie XD
 roboty na 2 tygodnie XD

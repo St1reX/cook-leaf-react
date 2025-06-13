@@ -32,6 +32,7 @@ const DropdownInput = ({ type }) => {
         type="text"
         placeholder="Search for ingredients"
         id={`${type}Input`}
+        name={`${type}Input`}
         value={inputValue}
         onChange={(e) => setInputValue(e.target.value)}
         onFocus={() => setIsFocused(true)}

@@ -1,4 +1,3 @@
-import StepsTimeInput from "./StepsTimeInput";
 import { notyfInstance } from "../../../../../../../../constants/notyfConfig";
 import NumberInput from "../../../shared/NumberInput";
 
@@ -9,12 +8,7 @@ export default function StepsModal({ steps, setSteps }) {
   };
 
   const handleStepTimeChange = (value, index) => {
-    console.log("wywołało się");
-
-    console.log(value, index);
-
     const newSteps = steps.map((step, i) => (i === index ? { ...step, estimated_time: value } : step));
-    console.log(newSteps);
 
     setSteps(newSteps);
   };
@@ -38,7 +32,7 @@ export default function StepsModal({ steps, setSteps }) {
       role="dialog"
       tabIndex="-1"
     >
-      <div className="modal-dialog overlay-open:opacity-100 overlay-open:duration-300 max-w-none">
+      <div className="modal-dialog overflow-auto overlay-open:opacity-100 overlay-open:duration-300 max-w-none">
         <div className="modal-content h-full max-h-none justify-between">
           <div className="modal-header">
             <h3 className="modal-title">Add steps to your recipe</h3>

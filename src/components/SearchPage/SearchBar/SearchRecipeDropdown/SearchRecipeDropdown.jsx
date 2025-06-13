@@ -15,6 +15,8 @@ const SearchRecipeDropdown = ({ className }) => {
         type="text"
         placeholder="Search for recipes"
         value={inputValue}
+        id="searchRecipeInput"
+        name="searchRecipeInput"
         onChange={(e) => setInputValue(e.target.value)}
         onFocus={() => setIsFocused(true)}
         onBlur={() => setTimeout(() => setIsFocused(false), 500)}

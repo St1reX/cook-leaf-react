@@ -24,6 +24,8 @@ export default function PortionsAmount() {
             <label key={value} className="custom-soft-option flex flex-row items-start">
               <input
                 type="checkbox"
+                id={`portionsAmount-${value}`}
+                name={`portionsAmount-${value}`}
                 className="checkbox hidden"
                 value={value}
                 checked={value === selectedPortionsAmount}

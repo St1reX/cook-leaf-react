@@ -17,6 +17,7 @@ export default function MailInput() {
             name="mail"
             id="userMail"
             placeholder="mailexample@domain.com"
+            autoComplete="email"
             {...field}
           />
         </div>

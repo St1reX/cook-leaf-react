@@ -35,6 +35,7 @@ export default function Rating() {
                   type="checkbox"
                   className="checkbox checkbox-primary mr-2"
                   id={`rating-${value}`}
+                  name={`rating-${value}`}
                   value={value}
                   checked={selectedRatings.includes(value)}
                   onChange={handleLocalChange}

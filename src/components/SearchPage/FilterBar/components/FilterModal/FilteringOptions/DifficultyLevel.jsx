@@ -24,7 +24,8 @@ export default function DifficultyLevel() {
             <label key={value} className="custom-soft-option flex flex-row items-start">
               <input
                 type="checkbox"
-                name="difficultyLevel"
+                id={`difficultyLevel-${value}`}
+                name={`difficultyLevel-${value}`}
                 className="checkbox hidden"
                 value={value}
                 checked={selectedLevel === value}

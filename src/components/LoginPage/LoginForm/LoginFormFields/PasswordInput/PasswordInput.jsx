@@ -16,6 +16,7 @@ export default function PasswordInput() {
             placeholder="*********"
             id="passwordInput"
             name="password"
+            autoComplete="current-password"
             {...field}
           />
         </div>

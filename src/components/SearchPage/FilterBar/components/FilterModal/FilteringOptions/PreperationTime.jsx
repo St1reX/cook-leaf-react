@@ -24,6 +24,8 @@ export default function PreperationTime({ onPreparationTimeChange }) {
             <label key={value} className="custom-soft-option flex flex-row items-start">
               <input
                 type="checkbox"
+                id={`preparationTime-${value}`}
+                name={`preparationTime-${value}`}
                 className="checkbox hidden"
                 value={value}
                 checked={value === selectedTime}
