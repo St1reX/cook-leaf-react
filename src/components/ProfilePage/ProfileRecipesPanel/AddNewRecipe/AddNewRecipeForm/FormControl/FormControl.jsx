@@ -1,8 +1,9 @@
 import { useFormikContext } from "formik";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { notyfInstance } from "../../../../../../constants/notyfConfig";
 
 export default function FormControl() {
+  const resetButtonRef = useRef();
   const { validateForm, submitForm } = useFormikContext();
   const [step, setStep] = useState(1);
 
@@ -14,6 +15,7 @@ export default function FormControl() {
     }
 
     await submitForm();
+    resetForm(step, resetButtonRef);
   };
 
   return (
@@ -21,6 +23,7 @@ export default function FormControl() {
       <button
         type="button"
         className="btn btn-primary btn-prev max-sm:btn-square"
+        ref={resetButtonRef}
         onClick={() => setStep(step - 1)}
         data-stepper-back-btn=""
       >
@@ -44,4 +47,15 @@ export default function FormControl() {
       )}
     </div>
   );
+}
+
+
+function resetForm(steps = 3, buttonRef)
+{
+  for(let i=0; i<3; i++)
+    {
+      if (buttonRef.current) {
+        buttonRef.current.click();
+      }
+    }
 }
