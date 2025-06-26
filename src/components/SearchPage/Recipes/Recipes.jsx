@@ -3,6 +3,8 @@ import RecipeCard from "../../Shared/RecipeCard/RecipeCard";
 
 export default function Recipes() {
   const { recipes, isLoading } = useRecipes();
+  console.log(recipes);
+  
 
   return (
     <>

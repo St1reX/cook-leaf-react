@@ -1,9 +1,11 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useState, useEffect } from "react";
 import useRecipesQuery from "../queries/useRecipesQuery";
 
 const RecipesContext = createContext();
 
 export default function RecipesProvider({ children }) {
+  const [recipes, setRecipes] = useState([]);
+
   const [filters, setFilters] = useState({
     ingredients: {
       displayLocation: "modal",
@@ -42,11 +44,17 @@ export default function RecipesProvider({ children }) {
     },
   });
 
-  const { data: recipes, isLoading } = useRecipesQuery();
+  const { data: recipesData, isLoading } = useRecipesQuery();
+  useEffect(() => {
+    setRecipes(recipesData);
+  }, [recipesData]);
+
+  console.log(recipesData);
+  
 
   return (
     <>
-      <RecipesContext.Provider value={{ filters, setFilters, recipes, isLoading }}>
+      <RecipesContext.Provider value={{ filters, setFilters, recipes, setRecipes, isLoading }}>
         {children}
       </RecipesContext.Provider>
     </>

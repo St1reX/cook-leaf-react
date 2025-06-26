@@ -3,10 +3,12 @@ import FormNav from "./FormNav/FormNav";
 import RecipePhotoIngredients from "./RecipePhotoIngredients/RecipePhotoIngredients";
 import RecipeStepsCategories from "./RecipeStepsCategories/RecipeStepsCategories";
 import FormControl from "./FormControl/FormControl";
+import { useRecipes } from "../../../../../context/RecipesContext";
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
 import useAddRecipeMutation from "../../../../../mutations/useAddRecipeMutation";
 import { useRef } from "react";
+import useRecipesQuery from "../../../../../queries/useRecipesQuery";
 
 const validationSchema = Yup.object().shape({
   name: Yup.string()
@@ -31,11 +33,13 @@ const initialValues = {
 };
 
 export default function AddNewRecipeForm() {
+  const { recipes, setRecipes } = useRecipes();
   const addRecipeMutation = useAddRecipeMutation();
-
   const handleSubmit = async (values, { setSubmitting, resetForm }) => {
     try {
       await addRecipeMutation.mutateAsync(values);
+      const { data: refreshedRecipes } = useRecipesQuery();
+      setRecipes(refreshedRecipes);
     } catch (error) {
     } finally {
       setSubmitting(false);
