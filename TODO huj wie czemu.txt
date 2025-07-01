@@ -1,6 +1,0 @@
-TODO huj wie czemu:
--- modal do kroków musi być kurwa scrollowalny
--- opinie dodać
--- dodawanie kategorii przy kreatorze
--- endpoint do sortowania może łaskawie XD
-roboty na 2 tygodnie XD

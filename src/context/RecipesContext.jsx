@@ -46,11 +46,10 @@ export default function RecipesProvider({ children }) {
 
   const { data: recipesData, isLoading } = useRecipesQuery();
   useEffect(() => {
-    setRecipes(recipesData);
+    if (recipesData) {
+      setRecipes(recipesData);
+    }
   }, [recipesData]);
-
-  console.log(recipesData);
-  
 
   return (
     <>

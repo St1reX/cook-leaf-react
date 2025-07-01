@@ -6,6 +6,5 @@ export default function useIngredientsQuery(prompt) {
     queryFn: () => axiosInstance.get(`/ingredients`, { params: { name: prompt } }).then((res) => res.data),
     queryKey: ["ingredients", prompt],
     enabled: prompt?.trim().length > 0,
-    staleTime: 60 * 1000 * 60,
   });
 }
