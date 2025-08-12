@@ -3,7 +3,7 @@ import AutocompleteIngredientDropdown from "./ModalComponents/AutocompleteIngred
 import NumberInput from "../../shared/NumberInput";
 import UnitSelect from "./ModalComponents/UnitSelect";
 
-export default function IngredientsModal({ ingredients, setIngredients }) {
+export default function IngredientsModal({ ingredients, setIngredients, validateField }) {
   const [selectedIngredient, setSelectedIngredient] = useState(null);
   const [quantity, setQuantity] = useState(1);
   const [unit, setUnit] = useState(null);

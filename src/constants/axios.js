@@ -1,7 +1,8 @@
 import axios from "axios";
 import { notyfInstance } from "./notyfConfig";
 
-const apiUrl = import.meta.env.VITE_API_URL;
+const env = import.meta.env.VITE_ENV;
+const apiUrl = env === "prod" ? import.meta.env.VITE_BACK_PROD_URL : import.meta.env.VITE_BACK_DEV_URL;
 
 export const axiosInstance = axios.create({
   baseURL: apiUrl,

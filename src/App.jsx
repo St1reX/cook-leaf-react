@@ -2,8 +2,6 @@ import "./App.css";
 import { Route, Routes, useNavigate } from "react-router-dom";
 
 import useFlyonUIInit from "./hooks/useFlyonUIInit";
-import { useEffect } from "react";
-import { useAuth } from "./context/AuthContext";
 
 import Layout from "./components/Layout";
 

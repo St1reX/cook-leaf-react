@@ -1,8 +1,9 @@
 import { useFormikContext } from "formik";
 import IngredientsModal from "./IngredientsModal/IngredientsModal";
+import { Field } from "formik";
 
 export default function RecipePhotoIngredients() {
-  const { values, setFieldValue } = useFormikContext();
+  const { values, setFieldValue, validateField } = useFormikContext();
 
   const handleFileChange = (e) => {
     const file = e.target.files[0];
@@ -45,12 +46,16 @@ export default function RecipePhotoIngredients() {
           >
             {values.ingredients.length > 0 ? `${values.ingredients.length} included` : "Add ingredients"}
           </button>
+          <Field name="ingredients">
+            {({ meta }) => <>{meta.error && <div className="text-red-500 text-sm mt-1">{meta.error}</div>}</>}
+          </Field>
         </div>
       </div>
 
       <IngredientsModal
         ingredients={values.ingredients}
         setIngredients={(newIngredients) => setFieldValue("ingredients", newIngredients)}
+        validateField={validateField}
       />
     </div>
   );
