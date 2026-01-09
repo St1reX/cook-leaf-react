@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import formatTime from "../../../utils/formatTIme";
+import formatTime from "../../../utils/formatTime";
 import HeartBadge from "../HeartBadge/HeartBadge";
 
 export default function RecipeCard({
