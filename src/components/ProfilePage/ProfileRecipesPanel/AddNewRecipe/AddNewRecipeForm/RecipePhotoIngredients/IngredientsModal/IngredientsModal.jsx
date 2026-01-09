@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import AutocompleteIngredientDropdown from "./ModalComponents/AutocompleteIngredientDropdown";
 import NumberInput from "../../shared/NumberInput";
 import UnitSelect from "./ModalComponents/UnitSelect";

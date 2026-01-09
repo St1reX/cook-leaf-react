@@ -5,7 +5,7 @@ export default function PasswordInput() {
   return (
     <>
       <div className="mb-4">
-        <label className="label-text font-medium" htmlFor="passwordInput">
+        <label className="label-text font-medium" htmlFor="password">
           Password
         </label>
         <div className={`input max-w-sm ${meta.touched && meta.error ? "is-invalid" : ""}`}>
@@ -14,7 +14,7 @@ export default function PasswordInput() {
             type="password"
             className="grow"
             placeholder="*********"
-            id="passwordInput"
+            id="password"
             name="password"
             autoComplete="current-password"
             {...field}

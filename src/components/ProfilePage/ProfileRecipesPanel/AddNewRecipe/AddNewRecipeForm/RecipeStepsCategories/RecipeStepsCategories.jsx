@@ -1,6 +1,7 @@
 import { useFormikContext } from "formik";
 import CategoriesModal from "./modals/CategoriesModal/CategoriesModal";
 import StepsModal from "./modals/StepsModal/StepsModal";
+import { Field } from "formik";
 
 export default function RecipeStepsCategories() {
   const { values, setFieldValue } = useFormikContext();
@@ -28,6 +29,9 @@ export default function RecipeStepsCategories() {
           >
             Add steps
           </button>
+          <Field name="steps">
+            {({ meta }) => <>{meta.error && <div className="text-red-500 text-sm mt-1">{meta.error}</div>}</>}
+          </Field>
         </div>
 
         <div>

@@ -6,7 +6,7 @@ export default function MailInput() {
   return (
     <>
       <div>
-        <label className="label-text font-medium" htmlFor="userMail">
+        <label className="label-text font-medium" htmlFor="email">
           E-Mail
         </label>
         <div className={`input max-w-sm ${meta.touched && meta.error ? "is-invalid" : ""}`}>
@@ -14,8 +14,8 @@ export default function MailInput() {
           <input
             className="grow"
             type="text"
-            name="mail"
-            id="userMail"
+            name="email"
+            id="email"
             placeholder="mailexample@domain.com"
             autoComplete="email"
             {...field}

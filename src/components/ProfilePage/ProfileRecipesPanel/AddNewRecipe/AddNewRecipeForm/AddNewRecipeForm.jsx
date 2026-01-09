@@ -7,7 +7,6 @@ import { useRecipes } from "../../../../../context/RecipesContext";
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
 import useAddRecipeMutation from "../../../../../mutations/useAddRecipeMutation";
-import { useRef } from "react";
 import useRecipesQuery from "../../../../../queries/useRecipesQuery";
 
 const validationSchema = Yup.object().shape({
@@ -17,7 +16,7 @@ const validationSchema = Yup.object().shape({
     .max(100, "Recipe name must not exceed 100 characters"),
   difficulty_level: Yup.string().required("Difficulty level is required"),
   portions_amount: Yup.string().required("Portions amount is required"),
-  ingredients: Yup.array().min(1, "At least one ingredient is required"),
+  ingredients: Yup.array().min(2, "At least two ingredients is required"),
   steps: Yup.array().min(1, "At least one step is required"),
   photo: Yup.mixed().nullable(),
 });
